@@ -34,3 +34,8 @@ xcuserdata/
 
 # End of https://www.gitignore.io/api/xcode
 
+#CocoaPod
+Pods/*
+
+#Mac
+.DS_Store
