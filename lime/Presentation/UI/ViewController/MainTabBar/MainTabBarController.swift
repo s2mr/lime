@@ -9,7 +9,13 @@
 import UIKit
 
 class MainTabBarController: UITabBarController {
-
+	
+	var presenter: MainTabBarPresenter?
+	
+	public func inject(presenter: MainTabBarPresenter) {
+		self.presenter = presenter
+	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 

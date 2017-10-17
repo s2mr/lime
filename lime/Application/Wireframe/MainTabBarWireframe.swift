@@ -6,7 +6,7 @@
 //  Copyright © 2017 kazu. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol MainTabBarWireframe {
 	weak var mainTabBarController: MainTabBarController? {get set}

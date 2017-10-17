@@ -8,8 +8,18 @@
 
 import UIKit
 
+protocol FriendListViewInput: class {
+	
+}
+
 class FriendListViewController: UIViewController {
 
+	var presenter: FriendListPresenter?
+	
+	public func inject(presenter: FriendListPresenter) {
+		self.presenter = presenter
+	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 

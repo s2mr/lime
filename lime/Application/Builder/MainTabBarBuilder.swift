@@ -6,7 +6,6 @@
 //  Copyright © 2017 kazu. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 struct MainTabBarBuilder {
@@ -15,12 +14,15 @@ struct MainTabBarBuilder {
 		
 		let tabBarController = UIStoryboard(name: "MainTabBar", bundle: nil).instantiateInitialViewController() as! MainTabBarController
 		
+		let flViewController = FriendListBuilder().build()
 		
-		let flViewController = UIStoryboard(name: "FriendList", bundle: nil).instantiateInitialViewController() as! FriendListViewController
 		tabBarController.viewControllers = [flViewController]
 		
-		wireframe.mainTabBarController = tabBarController
-
+		let presenter = MainTabBarPresenterImpl(wireframe: wireframe)
+		tabBarController.inject(presenter: presenter)
+		
+		wireframe.mainTabBarController = tabBarController // 何してんだろう
+		
 		return tabBarController
 	}
 }
