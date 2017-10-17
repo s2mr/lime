@@ -16,6 +16,12 @@
 		6EECF5F41F95C06000474622 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EECF5F21F95C06000474622 /* LaunchScreen.storyboard */; };
 		6EECF5FF1F95C06100474622 /* limeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EECF5FE1F95C06100474622 /* limeTests.swift */; };
 		6EECF60A1F95C06100474622 /* limeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EECF6091F95C06100474622 /* limeUITests.swift */; };
+		6EECF6211F961E1C00474622 /* MainTabBarBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EECF6201F961E1C00474622 /* MainTabBarBuilder.swift */; };
+		6EECF6241F961F6300474622 /* MainTabBarWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EECF6231F961F6300474622 /* MainTabBarWireframe.swift */; };
+		6EECF6261F96200200474622 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EECF6251F96200200474622 /* FriendListViewController.swift */; };
+		6EECF6281F9622AB00474622 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EECF6271F9622AB00474622 /* MainTabBarController.swift */; };
+		6EECF62B1F96233C00474622 /* MainTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EECF62A1F96233C00474622 /* MainTabBar.storyboard */; };
+		6EECF62E1F96257A00474622 /* FriendList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EECF62D1F96257A00474622 /* FriendList.storyboard */; };
 		BB50848F0C9E140950CD5B5F /* Pods_limeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6795BD910AFD96EC1BE1A0B /* Pods_limeTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +60,12 @@
 		6EECF6051F95C06100474622 /* limeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = limeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EECF6091F95C06100474622 /* limeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = limeUITests.swift; sourceTree = "<group>"; };
 		6EECF60B1F95C06100474622 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6EECF6201F961E1C00474622 /* MainTabBarBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarBuilder.swift; sourceTree = "<group>"; };
+		6EECF6231F961F6300474622 /* MainTabBarWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarWireframe.swift; sourceTree = "<group>"; };
+		6EECF6251F96200200474622 /* FriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
+		6EECF6271F9622AB00474622 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		6EECF62A1F96233C00474622 /* MainTabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBar.storyboard; sourceTree = "<group>"; };
+		6EECF62D1F96257A00474622 /* FriendList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendList.storyboard; sourceTree = "<group>"; };
 		9AB5A283F6716BECE27395D0 /* Pods_lime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5476C78B10EAFCA560201A5 /* Pods-limeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-limeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-limeTests/Pods-limeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C58DDBB728BDD9FB239912A7 /* Pods-limeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-limeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-limeUITests/Pods-limeUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -125,7 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				6EECF5E91F95C06000474622 /* AppDelegate.swift */,
-				6EECF5EB1F95C06000474622 /* ViewController.swift */,
+				6EECF61E1F961DB800474622 /* Application */,
+				6EECF6171F9619A000474622 /* Presentation */,
 				6EECF5ED1F95C06000474622 /* Main.storyboard */,
 				6EECF5F01F95C06000474622 /* Assets.xcassets */,
 				6EECF5F21F95C06000474622 /* LaunchScreen.storyboard */,
@@ -150,6 +163,107 @@
 				6EECF60B1F95C06100474622 /* Info.plist */,
 			);
 			path = limeUITests;
+			sourceTree = "<group>";
+		};
+		6EECF6171F9619A000474622 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				6EECF6191F9619FA00474622 /* UI */,
+				6EECF6181F9619BF00474622 /* Presenter */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		6EECF6181F9619BF00474622 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		6EECF6191F9619FA00474622 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				6EECF61D1F961A2800474622 /* ViewController */,
+				6EECF61C1F961A2400474622 /* Cell */,
+				6EECF61B1F961A1800474622 /* View */,
+				6EECF61A1F961A1100474622 /* ViewModel */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		6EECF61A1F961A1100474622 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		6EECF61B1F961A1800474622 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6EECF61C1F961A2400474622 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		6EECF61D1F961A2800474622 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6EECF62C1F96256000474622 /* FriendList */,
+				6EECF6291F96231200474622 /* MainTabBar */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		6EECF61E1F961DB800474622 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				6EECF6221F961F3D00474622 /* Wireframe */,
+				6EECF61F1F961DC300474622 /* Builder */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		6EECF61F1F961DC300474622 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				6EECF6201F961E1C00474622 /* MainTabBarBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		6EECF6221F961F3D00474622 /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				6EECF6231F961F6300474622 /* MainTabBarWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		6EECF6291F96231200474622 /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				6EECF6271F9622AB00474622 /* MainTabBarController.swift */,
+				6EECF62A1F96233C00474622 /* MainTabBar.storyboard */,
+				6EECF5EB1F95C06000474622 /* ViewController.swift */,
+			);
+			path = MainTabBar;
+			sourceTree = "<group>";
+		};
+		6EECF62C1F96256000474622 /* FriendList */ = {
+			isa = PBXGroup;
+			children = (
+				6EECF6251F96200200474622 /* FriendListViewController.swift */,
+				6EECF62D1F96257A00474622 /* FriendList.storyboard */,
+			);
+			path = FriendList;
 			sourceTree = "<group>";
 		};
 		AE1D588B978B56C1C3FD943F /* Pods */ = {
@@ -282,8 +396,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EECF5F41F95C06000474622 /* LaunchScreen.storyboard in Resources */,
+				6EECF62B1F96233C00474622 /* MainTabBar.storyboard in Resources */,
 				6EECF5F11F95C06000474622 /* Assets.xcassets in Resources */,
 				6EECF5EF1F95C06000474622 /* Main.storyboard in Resources */,
+				6EECF62E1F96257A00474622 /* FriendList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,8 +562,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EECF6261F96200200474622 /* FriendListViewController.swift in Sources */,
 				6EECF5EC1F95C06000474622 /* ViewController.swift in Sources */,
+				6EECF6281F9622AB00474622 /* MainTabBarController.swift in Sources */,
 				6EECF5EA1F95C06000474622 /* AppDelegate.swift in Sources */,
+				6EECF6211F961E1C00474622 /* MainTabBarBuilder.swift in Sources */,
+				6EECF6241F961F6300474622 /* MainTabBarWireframe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
