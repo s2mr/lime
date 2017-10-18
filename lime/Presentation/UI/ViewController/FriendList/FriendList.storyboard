@@ -16,9 +16,37 @@
                     <view key="view" contentMode="scaleToFill" id="Ljn-pJ-wNC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="q01-Yk-vuw">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendListViewCell" id="UqJ-hA-cgJ" customClass="FriendListViewCell" customModule="lime" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UqJ-hA-cgJ" id="rCY-6J-dqa">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="qtl-EZ-Zr3" id="sXj-P6-iht"/>
+                                    <outlet property="delegate" destination="qtl-EZ-Zr3" id="7pc-zg-IFa"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Q0B-gb-FMc" firstAttribute="trailing" secondItem="q01-Yk-vuw" secondAttribute="trailing" id="GpJ-2W-JWC"/>
+                            <constraint firstItem="q01-Yk-vuw" firstAttribute="leading" secondItem="Q0B-gb-FMc" secondAttribute="leading" id="KaS-Vl-scC"/>
+                            <constraint firstItem="q01-Yk-vuw" firstAttribute="top" secondItem="Q0B-gb-FMc" secondAttribute="top" id="MTe-Ga-ZW6"/>
+                            <constraint firstItem="Q0B-gb-FMc" firstAttribute="bottom" secondItem="q01-Yk-vuw" secondAttribute="bottom" id="q3Y-Lu-ElQ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Q0B-gb-FMc"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="q01-Yk-vuw" id="v62-la-mBp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hmw-40-qt1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

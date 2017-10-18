@@ -7,15 +7,48 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol FriendListPresenter {
+	func loadFriendList()
 }
 
 class FriendListPresenterImpl: FriendListPresenter {
 	
+	weak var viewInput: FriendListViewInput? // なんでこれだけ宣言違うんだ
 	let wireframe: FriendListWireframe
+	let useCase: FriendListUseCase
 	
-	public required init(wireframe: FriendListWireframe) {
+	fileprivate let disposeBag = DisposeBag()
+	
+	public required init(viewInput: FriendListViewInput, wireframe: FriendListWireframe, useCase: FriendListUseCase) {
+		self.viewInput = viewInput
+		self.useCase = useCase
 		self.wireframe = wireframe
 	}
+	
+	func loadFriendList() {
+		useCase.loadFriendList()
+			.subscribe(
+				onNext: { [weak self] friendList in
+					self?.loadedFriendListModel(friendList: friendList)
+				},
+				onError: { error in
+					NSLog("Error")
+				},
+				onCompleted: nil,
+				onDisposed: nil)
+			.disposed(by: disposeBag)
+	}
+}
+
+extension FriendListPresenterImpl {
+	fileprivate func loadedFriendListModel(friendList: FriendListModel) {
+		DispatchQueue.main.async { [weak self] in
+			self?.viewInput?.setFriendListModel(friendList)
+			//TODO:
+		}
+	}
+	
+	//TODO: ErrorHandling
 }

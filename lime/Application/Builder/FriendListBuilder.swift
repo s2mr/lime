@@ -12,8 +12,13 @@ struct FriendListBuilder {
 	func build() -> FriendListViewController {
 		let wireframe = FriendListWireframeImpl()
 		let viewController = UIStoryboard(name: "FriendList", bundle: nil).instantiateInitialViewController() as! FriendListViewController
+		let useCase = FriendListUseCaseImpl(
+			friendListRepository: FriendListRepositoryImpl(
+				dataStore: FriendListDataStoreImpl()
+			)
+		)
 		
-		let presenter = FriendListPresenterImpl(wireframe: wireframe)
+		let presenter = FriendListPresenterImpl(viewInput: viewController, wireframe: wireframe, useCase: useCase)
 		viewController.presenter = presenter
 		
 		wireframe.viewController = viewController // 何してんだろう
