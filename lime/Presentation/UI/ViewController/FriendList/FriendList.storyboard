@@ -36,6 +36,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Q0B-gb-FMc" firstAttribute="trailing" secondItem="q01-Yk-vuw" secondAttribute="trailing" id="GpJ-2W-JWC"/>
                             <constraint firstItem="q01-Yk-vuw" firstAttribute="leading" secondItem="Q0B-gb-FMc" secondAttribute="leading" id="KaS-Vl-scC"/>

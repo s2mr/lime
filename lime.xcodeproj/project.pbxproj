@@ -172,8 +172,8 @@
 		6E48F9871F97C1770051E02F /* TalkRoom */ = {
 			isa = PBXGroup;
 			children = (
-				6E48F9881F97C1830051E02F /* TalkRoom.storyboard */,
 				6E48F98A1F97C1910051E02F /* TalkRoomViewController.swift */,
+				6E48F9881F97C1830051E02F /* TalkRoom.storyboard */,
 			);
 			path = TalkRoom;
 			sourceTree = "<group>";
@@ -181,8 +181,8 @@
 		6E48F9901F97C3E80051E02F /* TalkRoomList */ = {
 			isa = PBXGroup;
 			children = (
-				6E48F9911F97C4060051E02F /* TalkRoomList.storyboard */,
 				6E48F9951F97C4CC0051E02F /* TalkRoomListViewController.swift */,
+				6E48F9911F97C4060051E02F /* TalkRoomList.storyboard */,
 			);
 			path = TalkRoomList;
 			sourceTree = "<group>";

@@ -17,7 +17,11 @@ struct MainTabBarBuilder {
 		let flViewController = FriendListBuilder().build()
 		let trViewController = TalkRoomListBuilder().build()
 		
-		tabBarController.viewControllers = [flViewController, trViewController]
+		flViewController.title = "Friends"
+		trViewController.title = "Chats"
+		
+		tabBarController.viewControllers = [flViewController,
+		                                    UINavigationController(rootViewController: trViewController)]
 		
 		let presenter = MainTabBarPresenterImpl(wireframe: wireframe)
 		tabBarController.inject(presenter: presenter)

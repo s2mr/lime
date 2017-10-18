@@ -53,7 +53,6 @@ class FriendListViewController: UIViewController {
 
 extension FriendListViewController {
 	func setupUI() {
-		self.title = "Friends"
 	}
 }
 
@@ -83,6 +82,7 @@ extension FriendListViewController: UITableViewDataSource {
 
 extension FriendListViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		
 		print(indexPath)
 	}
 }

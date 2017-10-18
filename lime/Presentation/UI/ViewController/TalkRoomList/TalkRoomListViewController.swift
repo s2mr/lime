@@ -26,7 +26,6 @@ class TalkRoomListViewController: UIViewController {
 
 extension TalkRoomListViewController {
 	func setupUI() {
-		self.title = "Chats"
 	}
 }
 
