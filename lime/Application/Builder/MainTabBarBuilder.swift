@@ -15,8 +15,9 @@ struct MainTabBarBuilder {
 		let tabBarController = UIStoryboard(name: "MainTabBar", bundle: nil).instantiateInitialViewController() as! MainTabBarController
 		
 		let flViewController = FriendListBuilder().build()
+		let trViewController = TalkRoomListBuilder().build()
 		
-		tabBarController.viewControllers = [flViewController]
+		tabBarController.viewControllers = [flViewController, trViewController]
 		
 		let presenter = MainTabBarPresenterImpl(wireframe: wireframe)
 		tabBarController.inject(presenter: presenter)
