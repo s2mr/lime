@@ -16,9 +16,38 @@
                     <view key="view" contentMode="scaleToFill" id="Myy-EW-Fo4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Odh-Pb-Qea">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TalkRoomList" id="nJ1-Q3-lCq" customClass="TalkRoomListViewCell" customModule="lime" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nJ1-Q3-lCq" id="eJI-BD-nUp">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Zxp-xb-7em" id="mxA-46-fz8"/>
+                                    <outlet property="delegate" destination="Zxp-xb-7em" id="RwV-tz-gB5"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="837-R4-d25" firstAttribute="bottom" secondItem="Odh-Pb-Qea" secondAttribute="bottom" id="BWd-yn-zkz"/>
+                            <constraint firstItem="Odh-Pb-Qea" firstAttribute="leading" secondItem="837-R4-d25" secondAttribute="leading" id="Mkg-9H-Ab1"/>
+                            <constraint firstItem="837-R4-d25" firstAttribute="trailing" secondItem="Odh-Pb-Qea" secondAttribute="trailing" id="VyP-3J-ev8"/>
+                            <constraint firstItem="Odh-Pb-Qea" firstAttribute="top" secondItem="837-R4-d25" secondAttribute="top" id="WVa-mk-AiO"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="837-R4-d25"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="Odh-Pb-Qea" id="t50-7z-QhT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LM8-Ww-K9s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
