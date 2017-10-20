@@ -9,19 +9,23 @@
 import UIKit
 
 class TalkRoomListViewController: UIViewController {
-
+	
 	@IBOutlet weak var tableView: UITableView!
 	
+	var presenter: TalkRoomListPresenter?
+	
+	public func inject(presenter: TalkRoomListPresenter) {
+		self.presenter = presenter
+	}
+	
 	override func viewDidLoad() {
-        super.viewDidLoad()
+		super.viewDidLoad()
 		setupUI()
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+	}
+	
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+	}
 }
 
 extension TalkRoomListViewController {
@@ -50,5 +54,7 @@ extension TalkRoomListViewController: UITableViewDataSource {
 extension TalkRoomListViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		NSLog("\(indexPath)")
+		//		let talkRoom
+		presenter?.selectCell()
 	}
 }

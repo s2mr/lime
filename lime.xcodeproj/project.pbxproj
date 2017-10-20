@@ -16,6 +16,7 @@
 		6E1135F51F97968B001AD3BA /* Translator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1135F41F97968B001AD3BA /* Translator.swift */; };
 		6E1135F81F979CBB001AD3BA /* FriendListTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1135F71F979CBB001AD3BA /* FriendListTranslator.swift */; };
 		6E1135FA1F97B205001AD3BA /* FriendListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1135F91F97B205001AD3BA /* FriendListViewCell.swift */; };
+		6E15676C1F99DD570069EA96 /* TalkRoomListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E15676B1F99DD570069EA96 /* TalkRoomListPresenter.swift */; };
 		6E48F9891F97C1830051E02F /* TalkRoom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E48F9881F97C1830051E02F /* TalkRoom.storyboard */; };
 		6E48F98B1F97C1910051E02F /* TalkRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E48F98A1F97C1910051E02F /* TalkRoomViewController.swift */; };
 		6E48F98D1F97C1BC0051E02F /* TalkRoomBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E48F98C1F97C1BC0051E02F /* TalkRoomBuilder.swift */; };
@@ -74,6 +75,7 @@
 		6E1135F41F97968B001AD3BA /* Translator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translator.swift; sourceTree = "<group>"; };
 		6E1135F71F979CBB001AD3BA /* FriendListTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListTranslator.swift; sourceTree = "<group>"; };
 		6E1135F91F97B205001AD3BA /* FriendListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewCell.swift; sourceTree = "<group>"; };
+		6E15676B1F99DD570069EA96 /* TalkRoomListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkRoomListPresenter.swift; sourceTree = "<group>"; };
 		6E48F9881F97C1830051E02F /* TalkRoom.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TalkRoom.storyboard; sourceTree = "<group>"; };
 		6E48F98A1F97C1910051E02F /* TalkRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkRoomViewController.swift; sourceTree = "<group>"; };
 		6E48F98C1F97C1BC0051E02F /* TalkRoomBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkRoomBuilder.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 			children = (
 				6EECF62F1F962C7700474622 /* FriendListPresenter.swift */,
 				6EECF6311F96322400474622 /* MainTabBarPresenter.swift */,
+				6E15676B1F99DD570069EA96 /* TalkRoomListPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -706,6 +709,7 @@
 				6EECF6261F96200200474622 /* FriendListViewController.swift in Sources */,
 				6EECF6361F9634CA00474622 /* FriendListWireframe.swift in Sources */,
 				6EECF6281F9622AB00474622 /* MainTabBarController.swift in Sources */,
+				6E15676C1F99DD570069EA96 /* TalkRoomListPresenter.swift in Sources */,
 				6EAF570D1F976634008EC349 /* FriendEntity.swift in Sources */,
 				6E1135FA1F97B205001AD3BA /* FriendListViewCell.swift in Sources */,
 				6EAF570A1F97649F008EC349 /* FriendListDataStore.swift in Sources */,

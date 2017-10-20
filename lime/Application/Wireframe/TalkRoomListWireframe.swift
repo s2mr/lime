@@ -10,10 +10,17 @@ import Foundation
 
 protocol TalkRoomListWireframe: class {
 	weak var viewController: TalkRoomListViewController? { get set }
+	
+	func showTalkRoom()
 }
 
 class TalkRoomListWireframeImpl: TalkRoomListWireframe {
 	var viewController: TalkRoomListViewController?
 	
-	
+	func showTalkRoom() {
+		
+		let nextViewController = TalkRoomBuilder().build()
+		viewController?.navigationController?.pushViewController(nextViewController, animated: true)
+		
+	}
 }
