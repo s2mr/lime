@@ -13,7 +13,13 @@ struct TalkRoomListBuilder {
 		let wireframe = TalkRoomListWireframeImpl()
 		let viewController = UIStoryboard(name: "TalkRoomList", bundle: nil).instantiateInitialViewController() as! TalkRoomListViewController
 		
-		let presenter = TalkRoomListPresenterImpl(wireframe: wireframe)
+		let useCase = TalkRoomListUseCaseImpl(
+			talkRoomListRepository: TalkRoomListRepositoryImpl(
+				dataStore: TalkRoomListDataStoreImpl()
+			)
+		)
+		
+		let presenter = TalkRoomListPresenterImpl(viewInput: viewController, useCase: useCase, wireframe: wireframe)
 		
 		viewController.inject(presenter: presenter)
 		

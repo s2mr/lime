@@ -6,7 +6,6 @@
 //  Copyright © 2017 kazu. All rights reserved.
 //
 
-
 public struct FriendEntity {
 	var userId		= ""
 	var screenName	= ""

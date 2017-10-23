@@ -11,7 +11,8 @@ import Foundation
 
 class TalkRoomListViewCell: UITableViewCell {
 	
-	func updateCell() {
-		self.textLabel?.text = "talk1"
+	func updateCell(_ talkRoom: TalkRoomViewModel) {
+		self.textLabel?.text = talkRoom.userScreenName
+		self.detailTextLabel?.text = talkRoom.userScreenName
 	}
 }

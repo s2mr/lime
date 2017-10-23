@@ -14,8 +14,8 @@ struct FriendListTranslator: Translator {
 	
 	func translate(_ entities: [FriendEntity]) throws -> FriendListModel {
 		var friendListModel = FriendListModel()
-		entities.forEach { entitiy -> () in
-			let friendModel = FriendModel(friendModel: entitiy)
+		entities.forEach { entity -> () in
+			let friendModel = FriendModel(friendModel: entity)
 			friendListModel.friendList.append(friendModel)
 		}
 		return friendListModel

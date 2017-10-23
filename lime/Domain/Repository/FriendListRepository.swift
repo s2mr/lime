@@ -6,7 +6,6 @@
 //  Copyright © 2017 kazu. All rights reserved.
 //
 
-import Foundation
 import RxSwift
 
 public protocol FriendListRepository {
