@@ -36,6 +36,9 @@ class TalkRoomListViewController: UIViewController {
 
 extension TalkRoomListViewController {
 	func setupUI() {
+//		tableView.estimatedRowHeight = 120
+//		tableView.rowHeight = UITableViewAutomaticDimension
+		tableView.rowHeight = 70
 	}
 }
 
