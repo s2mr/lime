@@ -20,8 +20,12 @@ struct MainTabBarBuilder {
 		flViewController.title = "Friends"
 		trViewController.title = "Chats"
 		
+		let navCon = UINavigationController(rootViewController: trViewController)
+		navCon.navigationBar.barTintColor = UIColor(displayP3Red: 38/255, green: 49/255, blue: 71/255, alpha: 0)
+		navCon.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+		
 		tabBarController.viewControllers = [flViewController,
-		                                    UINavigationController(rootViewController: trViewController)]
+		                                    navCon]
 		
 		let presenter = MainTabBarPresenterImpl(wireframe: wireframe)
 		tabBarController.inject(presenter: presenter)
