@@ -27,6 +27,8 @@ class ChatRoomViewController: UIViewController {
 extension ChatRoomViewController {
 	func setupUI() {
 		tableView.separatorColor = UIColor.clear
+//		tableView.estimatedRowHeight = 80
+		tableView.rowHeight = 80
 		
 		tableView.register(UINib(nibName: "YourChatViewCell", bundle: nil), forCellReuseIdentifier: "YourChat")
 		tableView.register(UINib(nibName: "MyChatViewCell", bundle: nil), forCellReuseIdentifier: "MyChat")

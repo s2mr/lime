@@ -16,7 +16,7 @@ class MyChatViewCell: UITableViewCell {
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()
-		// Initialization code
+		self.backgroundColor = UIColor.clear
 	}
 	
 	override func setSelected(_ selected: Bool, animated: Bool) {
@@ -24,8 +24,6 @@ class MyChatViewCell: UITableViewCell {
 		
 		// Configure the view for the selected state
 	}
-	
-	
 }
 
 extension MyChatViewCell {

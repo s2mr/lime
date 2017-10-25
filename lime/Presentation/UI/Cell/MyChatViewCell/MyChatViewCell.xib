@@ -32,13 +32,14 @@
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="あいうえおあいうえおあいうえおあいうえおあいうえお" translatesAutoresizingMaskIntoConstraints="NO" id="iEI-QC-LKY">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="あいうえおあいうえおあいうえおあいうえおあいうえお" translatesAutoresizingMaskIntoConstraints="NO" id="iEI-QC-LKY">
                         <rect key="frame" x="88" y="8" width="224" height="58.5"/>
                         <color key="backgroundColor" red="0.52156862745098043" green="0.88627450980392153" blue="0.28627450980392155" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" name=".HiraKakuInterface-W3" family=".Hiragino Kaku Gothic Interface" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstAttribute="bottomMargin" secondItem="iEI-QC-LKY" secondAttribute="bottom" id="DHm-G5-O1j"/>
                     <constraint firstItem="iEI-QC-LKY" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="G8B-De-1Hd"/>
