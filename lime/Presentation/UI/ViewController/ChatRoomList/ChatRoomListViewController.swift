@@ -1,5 +1,5 @@
 //
-//  TalkRoomListViewController.swift
+//  ChatRoomListViewController.swift
 //  lime
 //
 //  Created by 下村一将 on 2017/10/19.
@@ -8,25 +8,25 @@
 
 import UIKit
 
-protocol TalkRoomListViewInput: class {
-	func setTalkListModel(_: TalkRoomListModel)
+protocol ChatRoomListViewInput: class {
+	func setTalkListModel(_: ChatRoomListModel)
 }
 
-class TalkRoomListViewController: UIViewController {
+class ChatRoomListViewController: UIViewController {
 	
 	@IBOutlet weak var tableView: UITableView!
 	
-	var presenter: TalkRoomListPresenter?
-	var talkRooms: [TalkRoomViewModel] = [] // Todo: use viewmodel
+	var presenter: ChatRoomListPresenter?
+	var chatRooms: [ChatRoomViewModel] = [] // Todo: use viewmodel
 	
-	public func inject(presenter: TalkRoomListPresenter) {
+	public func inject(presenter: ChatRoomListPresenter) {
 		self.presenter = presenter
 	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupUI()
-		presenter?.loadTalkRoomList()
+		presenter?.loadChatRoomList()
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -34,7 +34,7 @@ class TalkRoomListViewController: UIViewController {
 	}
 }
 
-extension TalkRoomListViewController {
+extension ChatRoomListViewController {
 	func setupUI() {
 //		tableView.estimatedRowHeight = 120
 //		tableView.rowHeight = UITableViewAutomaticDimension
@@ -42,36 +42,36 @@ extension TalkRoomListViewController {
 	}
 }
 
-extension TalkRoomListViewController: UITableViewDataSource {
+extension ChatRoomListViewController: UITableViewDataSource {
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return talkRooms.count
+		return chatRooms.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "TalkRoomList") as! TalkRoomListViewCell
+		let cell = tableView.dequeueReusableCell(withIdentifier: "ChatRoomList") as! ChatRoomListViewCell
 		
-		let talkRoom: TalkRoomViewModel = talkRooms[indexPath.row]
-		cell.updateCell(talkRoom)
+		let chatRoom: ChatRoomViewModel = chatRooms[indexPath.row]
+		cell.updateCell(chatRoom)
 		
 		return cell
 	}
 }
 
-extension TalkRoomListViewController: UITableViewDelegate {
+extension ChatRoomListViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		NSLog("\(indexPath)")
-		//		let talkRoom
+		//		let chatRoom
 		presenter?.selectCell()
 	}
 }
 
-extension TalkRoomListViewController: TalkRoomListViewInput {
-	func setTalkListModel(_ talkRoomListModel: TalkRoomListModel) {
-		self.talkRooms = talkRoomListModel.talkRoomList // TODO: 型あってる？
+extension ChatRoomListViewController: ChatRoomListViewInput {
+	func setTalkListModel(_ chatRoomListModel: ChatRoomListModel) {
+		self.chatRooms = chatRoomListModel.chatRoomList // TODO: 型あってる？
 		self.tableView.reloadData()
 	}
 	

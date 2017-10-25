@@ -1,5 +1,5 @@
 //
-//  TalkRoomViewController.swift
+//  ChatRoomViewController.swift
 //  lime
 //
 //  Created by 下村一将 on 2017/10/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TalkRoomViewController: UIViewController {
+class ChatRoomViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

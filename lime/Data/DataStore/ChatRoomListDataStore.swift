@@ -1,5 +1,5 @@
 //
-//  TalkRoomListDataStore.swift
+//  ChatRoomListDataStore.swift
 //  lime
 //
 //  Created by 下村一将 on 2017/10/21.
@@ -8,18 +8,18 @@
 
 import RxSwift
 
-public protocol TalkRoomListDataStore {
-	func getTalkRoomList() -> Observable<[TalkRoomEntity]>
+public protocol ChatRoomListDataStore {
+	func getChatRoomList() -> Observable<[ChatRoomEntity]>
 }
 
-struct TalkRoomListDataStoreImpl: TalkRoomListDataStore {
+struct ChatRoomListDataStoreImpl: ChatRoomListDataStore {
 	// TODO: get by user
-	func getTalkRoomList() -> Observable<[TalkRoomEntity]> {
+	func getChatRoomList() -> Observable<[ChatRoomEntity]> {
 		let friend = FriendEntity(userId: "", screenName: "screenName1", name: "name")
-		let talkRoom = TalkRoomEntity(friend: friend, currentText: "最近眠い")
+		let chatRoom = ChatRoomEntity(friend: friend, currentText: "最近眠い")
 		let friend1 = FriendEntity(userId: "", screenName: "screenName2", name: "name")
-		let talkRoom1 = TalkRoomEntity(friend: friend1, currentText: "最近眠い")
-		let tr = [talkRoom, talkRoom1]
+		let chatRoom1 = ChatRoomEntity(friend: friend1, currentText: "最近眠い")
+		let tr = [chatRoom, chatRoom1]
 		
 		return Observable.create({ (observer) -> Disposable in
 			observer.onNext(tr)

@@ -15,7 +15,7 @@ struct MainTabBarBuilder {
 		let tabBarController = UIStoryboard(name: "MainTabBar", bundle: nil).instantiateInitialViewController() as! MainTabBarController
 		
 		let flViewController = FriendListBuilder().build()
-		let trViewController = TalkRoomListBuilder().build()
+		let trViewController = ChatRoomListBuilder().build()
 		
 		flViewController.title = "Friends"
 		trViewController.title = "Chats"

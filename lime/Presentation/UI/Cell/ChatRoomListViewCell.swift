@@ -1,5 +1,5 @@
 //
-//  TalkRoomListCell.swift
+//  ChatRoomListCell.swift
 //  lime
 //
 //  Created by 下村一将 on 2017/10/19.
@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class TalkRoomListViewCell: UITableViewCell {
+class ChatRoomListViewCell: UITableViewCell {
 	
 	@IBOutlet weak var userIconImageView: UIImageView!
 	@IBOutlet weak var userNameLabel: UILabel!
@@ -21,9 +21,9 @@ class TalkRoomListViewCell: UITableViewCell {
 		dateLabel.textColor = UIColor(displayP3Red: 184/255, green: 189/255, blue: 199/255, alpha: 1)
 	}
 	
-	func updateCell(_ talkRoom: TalkRoomViewModel) {
-		self.userNameLabel?.text = talkRoom.userScreenName
-		self.currentTextLabel.text = talkRoom.currentText
-		self.dateLabel.text = talkRoom.date
+	func updateCell(_ chatRoom: ChatRoomViewModel) {
+		self.userNameLabel?.text = chatRoom.userScreenName
+		self.currentTextLabel.text = chatRoom.currentText
+		self.dateLabel.text = chatRoom.date
 	}
 }

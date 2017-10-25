@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Talk Room List View Controller-->
+        <!--Chat Room List View Controller-->
         <scene sceneID="a55-kD-JIc">
             <objects>
-                <viewController id="Zxp-xb-7em" customClass="TalkRoomListViewController" customModule="lime" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Zxp-xb-7em" customClass="ChatRoomListViewController" customModule="lime" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Myy-EW-Fo4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TalkRoomList" rowHeight="70" id="nJ1-Q3-lCq" customClass="TalkRoomListViewCell" customModule="lime" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatRoomList" rowHeight="70" id="nJ1-Q3-lCq" customClass="ChatRoomListViewCell" customModule="lime" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nJ1-Q3-lCq" id="eJI-BD-nUp">

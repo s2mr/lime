@@ -1,5 +1,5 @@
 //
-//  TalkRoomBuilder.swift
+//  ChatRoomBuilder.swift
 //  lime
 //
 //  Created by 下村一将 on 2017/10/19.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-struct TalkRoomBuilder {
+struct ChatRoomBuilder {
 	func build() -> UIViewController {
-		let wireframe = TalkRoomWireframeImpl()
-		let viewController = UIStoryboard(name: "TalkRoom", bundle: nil).instantiateInitialViewController() as! TalkRoomViewController
+		let wireframe = ChatRoomWireframeImpl()
+		let viewController = UIStoryboard(name: "ChatRoom", bundle: nil).instantiateInitialViewController() as! ChatRoomViewController
 		
 		wireframe.viewController = viewController
 		
