@@ -27,8 +27,8 @@ class ChatRoomViewController: UIViewController {
 extension ChatRoomViewController {
 	func setupUI() {
 		tableView.separatorColor = UIColor.clear
-//		tableView.estimatedRowHeight = 80
-		tableView.rowHeight = 80
+		tableView.estimatedRowHeight = 10000
+		tableView.rowHeight = UITableViewAutomaticDimension
 		
 		tableView.register(UINib(nibName: "YourChatViewCell", bundle: nil), forCellReuseIdentifier: "YourChat")
 		tableView.register(UINib(nibName: "MyChatViewCell", bundle: nil), forCellReuseIdentifier: "MyChat")
@@ -51,7 +51,7 @@ extension ChatRoomViewController: UITableViewDataSource {
 			return cell
 		} else {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "MyChat") as! MyChatViewCell
-			cell.updateCell(text: "明日もいい天気", time: "13:11", isRead: true)
+			cell.updateCell(text: "明日もいい天気明日もいい天気明日もいい天気明日もいい天気明日もいい天気明日もいい天気明日もいい天気明日もいい天気明日もいい天気明日もいい天気明日もいい天気明日もいい天気", time: "13:11", isRead: true)
 			return cell
 		}
 	}
