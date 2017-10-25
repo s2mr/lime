@@ -9,27 +9,52 @@
 import UIKit
 
 class ChatRoomViewController: UIViewController {
+	
+	@IBOutlet weak var tableView: UITableView!
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		setupUI()
+		// Do any additional setup after loading the view.
+	}
+	
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+		// Dispose of any resources that can be recreated.
+	}
+	
+}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+extension ChatRoomViewController {
+	func setupUI() {
+		tableView.separatorColor = UIColor.clear
+		
+		tableView.register(UINib(nibName: "YourChatViewCell", bundle: nil), forCellReuseIdentifier: "YourChat")
+		tableView.register(UINib(nibName: "MyChatViewCell", bundle: nil), forCellReuseIdentifier: "MyChat")
+	}
+}
 
-        // Do any additional setup after loading the view.
-    }
+extension ChatRoomViewController: UITableViewDataSource {
+	func numberOfSections(in tableView: UITableView) -> Int {
+		return 1
+	}
+	
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return 3
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		if indexPath.row%2 == 0 {
+			let cell = tableView.dequeueReusableCell(withIdentifier: "YourChat") as! YourChatViewCell
+			cell.updateCell(text: "今日もいい天気", time: "12:11")
+			return cell
+		} else {
+			let cell = tableView.dequeueReusableCell(withIdentifier: "MyChat") as! MyChatViewCell
+			cell.updateCell(text: "明日もいい天気", time: "13:11", isRead: true)
+			return cell
+		}
+	}
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+extension ChatRoomViewController: UITableViewDelegate {
+	
 }

@@ -35,7 +35,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IfI-Ju-lVb">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="IfI-Ju-lVb">
                                                     <rect key="frame" x="16" y="2" width="62" height="60"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -87,4 +87,7 @@
             <point key="canvasLocation" x="-399.19999999999999" y="101.19940029985008"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Image" width="60" height="60"/>
+    </resources>
 </document>
