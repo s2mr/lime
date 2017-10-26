@@ -39,7 +39,7 @@ class ChatRoomListPresenterImpl: ChatRoomListPresenter {
 					NSLog("onNext")
 					self?.loadedChatRoomListModel(chatRoomListModel: chatRoomListModel)
 				},
-				onError: { [weak self] error in
+				onError: { error in
 					NSLog("error")
 				},
 				onCompleted: nil, onDisposed: nil)

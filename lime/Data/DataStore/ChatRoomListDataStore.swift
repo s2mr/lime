@@ -16,9 +16,12 @@ struct ChatRoomListDataStoreImpl: ChatRoomListDataStore {
 	// TODO: get by user
 	func getChatRoomList() -> Observable<[ChatRoomEntity]> {
 		let friend = FriendEntity(userId: "", screenName: "screenName1", name: "name")
-		let chatRoom = ChatRoomEntity(friend: friend, currentText: "最近眠い")
+		let chat1 = ChatEntity(text: "text1", time: "time", userType: .You)
+		let chat2 = ChatEntity(text: "text2", time: "time", userType: .You)
+		let chat3 = ChatEntity(text: "text3", time: "time", userType: .You)
+		let chatRoom = ChatRoomEntity(friend: friend, currentText: "最近眠い", chats: [chat1,chat2,chat3])
 		let friend1 = FriendEntity(userId: "", screenName: "screenName2", name: "name")
-		let chatRoom1 = ChatRoomEntity(friend: friend1, currentText: "最近眠い")
+		let chatRoom1 = ChatRoomEntity(friend: friend1, currentText: "最近眠い", chats: [chat1,chat2,chat3])
 		let tr = [chatRoom, chatRoom1]
 		
 		return Observable.create({ (observer) -> Disposable in

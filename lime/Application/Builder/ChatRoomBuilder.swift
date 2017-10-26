@@ -13,6 +13,16 @@ struct ChatRoomBuilder {
 		let wireframe = ChatRoomWireframeImpl()
 		let viewController = UIStoryboard(name: "ChatRoom", bundle: nil).instantiateInitialViewController() as! ChatRoomViewController
 		
+		let useCase = ChatRoomUseCaseImpl(
+			chatRoomRepository: ChatRoomRepositoryImpl(
+				dataStore: ChatRoomDataStoreImpl()
+			)
+		)
+		
+		let presenter = ChatRoomPresenterImpl(viewInput: viewController, wireframe: wireframe, useCase: useCase)
+		
+		viewController.inject(presenter: presenter)
+		
 		wireframe.viewController = viewController
 		
 		return viewController

@@ -8,11 +8,13 @@
 
 public struct ChatRoomEntity {
 	var friend: FriendEntity
-	var currentText		= ""
+	var currentText = ""
+	var chats: [ChatEntity]
 	
-	public init(friend: FriendEntity, currentText: String) {
+	public init(friend: FriendEntity, currentText: String, chats: [ChatEntity]) {
 		self.friend = friend
 		self.currentText = currentText
+		self.chats = chats
 	}
 }
 

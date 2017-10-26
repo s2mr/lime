@@ -8,13 +8,25 @@
 
 import UIKit
 
+protocol ChatRoomViewInput: class {
+	func setChatRoom(_:ChatRoomModel)
+}
+
 class ChatRoomViewController: UIViewController {
 	
 	@IBOutlet weak var tableView: UITableView!
+	
+	var presenter: ChatRoomPresenter?
+	var chats: [ChatEntity] = []
+	
+	func inject(presenter: ChatRoomPresenter) {
+		self.presenter = presenter
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupUI()
-		// Do any additional setup after loading the view.
+		presenter?.loadChatRoom()
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -41,22 +53,33 @@ extension ChatRoomViewController: UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 3
+		return self.chats.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		if indexPath.row%2 == 0 {
+		let chat = self.chats[indexPath.row]
+		if chat.userType == .You {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "YourChat") as! YourChatViewCell
-			cell.updateCell(text: "今日もいい天気", time: "12:11")
+			cell.updateCell(text: chat.text, time: chat.time)
 			return cell
 		} else {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "MyChat") as! MyChatViewCell
-			cell.updateCell(text: "明日もいい天気明日もいい天気明日もいい天気明日もいい天気明日もいい天気明日もいい天気明日もいい天気明日もいい天気明日もいい天気明日もいい天気明日もいい天気明日もいい天気", time: "13:11", isRead: true)
+			// Todo: isRead
+			cell.updateCell(text: chat.text, time: chat.time, isRead: true)
 			return cell
 		}
 	}
 }
 
 extension ChatRoomViewController: UITableViewDelegate {
-	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		print(indexPath)
+	}
+}
+
+extension ChatRoomViewController: ChatRoomViewInput {
+	func setChatRoom(_ chatRoomModel: ChatRoomModel) {
+		self.chats = chatRoomModel.chats
+		self.tableView.reloadData()
+	}
 }
