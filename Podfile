@@ -9,6 +9,7 @@ target 'lime' do
   # Pods for lime
   pod 'RxSwift', :git => 'https://github.com/ReactiveX/RxSwift', :branch => 'rxswift4.0-swift4.0'
   pod 'RxCocoa', :git => 'https://github.com/ReactiveX/RxSwift', :branch => 'rxswift4.0-swift4.0'
+  pod 'AlamofireSwiftyJSON'
 
   target 'limeTests' do
     inherit! :search_paths

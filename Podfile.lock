@@ -1,9 +1,15 @@
 PODS:
+  - Alamofire (4.5.1)
+  - AlamofireSwiftyJSON (1.0.0):
+    - Alamofire (~> 4.0)
+    - SwiftyJSON (~> 3.0)
   - RxCocoa (4.0.0-rc.0):
     - RxSwift (~> 4.0.0-rc.0)
   - RxSwift (4.0.0-rc.0)
+  - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
+  - AlamofireSwiftyJSON
   - RxCocoa (from `https://github.com/ReactiveX/RxSwift`, branch `rxswift4.0-swift4.0`)
   - RxSwift (from `https://github.com/ReactiveX/RxSwift`, branch `rxswift4.0-swift4.0`)
 
@@ -24,9 +30,12 @@ CHECKOUT OPTIONS:
     :git: https://github.com/ReactiveX/RxSwift
 
 SPEC CHECKSUMS:
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  AlamofireSwiftyJSON: 78908b766483a28aa5cc90fd191a687467042973
   RxCocoa: 58841348f4c6e6f6cd244522c16a6b7df5008956
   RxSwift: f0ff3c78e1f71a7d3506defde0b79c72fe39bac3
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: e9a441db7082b5f68102581fa8c9e85cd2f7c6c0
+PODFILE CHECKSUM: fffe7082b239ac66a5ae2366210571d3c3c25a7d
 
 COCOAPODS: 1.2.1
