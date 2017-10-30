@@ -14,7 +14,7 @@ public protocol ChatRoomDataStore {
 
 struct ChatRoomDataStoreImpl: ChatRoomDataStore {
 	func getChatRoom() -> Observable<ChatRoomEntity> {
-		let friend = FriendEntity(userId: "userId", screenName: "screenName", name: "name")
+		let friend = FriendEntity(userId: "userId", screenName: "screenName", name: "name", statusText: "nemui")
 		let chat1 = ChatEntity(text: "text1", time: "12:23", userType: UserType.You)
 		let chat2 = ChatEntity(text: "text2", time: "12:33", userType: UserType.I)
 		let chat3 = ChatEntity(text: "text3", time: "12:43", userType: UserType.You)

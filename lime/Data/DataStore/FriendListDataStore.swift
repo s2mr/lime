@@ -18,7 +18,7 @@ struct FriendListDataStoreImpl: FriendListDataStore {
 	private let api = LimeAPI()
 	
 	func getFriendList() -> Observable<[FriendEntity]> {
-		let friend = FriendEntity(userId: "", screenName: "masa", name: "kazu")
+		let friend = FriendEntity(userId: "", screenName: "masa", name: "kazu", statusText: "yeaaah")
 		let fl = [friend]
 		
 		return Observable.create({ (observer) -> Disposable in

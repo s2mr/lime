@@ -11,5 +11,5 @@ import Foundation
 protocol FriendListViewModel {
 	var name: String { get }
 	var screenName: String { get }
-	var userId: String { get }
+	var statusText: String { get }
 }

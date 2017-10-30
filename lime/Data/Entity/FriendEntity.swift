@@ -10,10 +10,12 @@ public struct FriendEntity {
 	var userId		= ""
 	var screenName	= ""
 	var name		= ""
+	var statusText	= ""
 	
-	public init(userId: String, screenName: String, name: String) {
+	public init(userId: String, screenName: String, name: String, statusText: String) {
 		self.userId = userId
 		self.screenName = screenName
 		self.name = name
+		self.statusText = statusText
 	}
 }

@@ -16,10 +16,12 @@ struct FriendModel: FriendListViewModel {
 	var name: String
 	var screenName: String
 	var userId: String
+	var statusText: String
 	
 	init(friendModel: FriendEntity) {
 		name = friendModel.name
 		screenName = friendModel.screenName
 		userId = friendModel.userId
+		statusText = friendModel.statusText
 	}
 }
