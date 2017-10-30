@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-extension LimeAPI {
+public extension LimeAPI {
 	struct UserRequest: LimeAPIRequest {
 		let id: Int
 	}
