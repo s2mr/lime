@@ -28,19 +28,12 @@ struct FriendListDataStoreImpl: FriendListDataStore {
 	}
 	
 	func getUser(id: Int) -> () {
-//		struct Url: URLConvertible {
-//			var url: String
-//			func asURL() throws -> URL {
-//				return URL(string: url)!
-//			}
-//		}
-//
-//		let url = Url(url: "https://lime-server-stg.herokuapp.com/v1/users")
-		
-		api.send(LimeAPI.UserRequest(id: 100))
-		
-		
-		
+		let disposeBag = DisposeBag()
+		api.send(LimeAPI.UserRequest(id: 100)).subscribe(onNext: {
+			print("onNext")
+			print($0)
+		}, onError: nil, onCompleted: nil, onDisposed: nil)
+		.disposed(by: disposeBag)
 	}
 	
 	

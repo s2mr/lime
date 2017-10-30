@@ -9,6 +9,7 @@
 
 import Foundation
 import Alamofire
+import RxSwift
 
 protocol LimeAPIRespondable: APIRespondable {
 	var keyPathForResponse: String? { get }
@@ -43,16 +44,29 @@ public class LimeAPI: API {
 		self.baseURL = configuration.baseURL
 	}
 	
-	func send<Req: LimeAPIRequest>(_ request: Req) {
-//		let manager = self.manager
-		
+	func send<Req: LimeAPIRequest>(_ request: Req) -> Observable<Req.Response> {
 		let url: URL = baseURL.appendingPathComponent(request.path)
 		
-		Alamofire.request(url, method: request.method, parameters: request.parameters,
-		                  encoding: request.encoding, headers: request.headers)
-			.responseString(completionHandler: { response in
-				
-				print("[RESPONSE]", response.value!)
-			})
+		return Observable.create { observer -> Disposable in
+			Alamofire.request(url, method: request.method, parameters: request.parameters,
+			                  encoding: request.encoding, headers: request.headers)
+				.responseJSON(completionHandler: { response in
+					print(response)
+					switch response.result {
+					case .success(let value):
+						do {
+							let res = try request.response(from: value)
+							observer.onNext(res)
+							observer.onCompleted()
+						} catch let error {
+							observer.onError(error)
+						}
+					case .failure(let error):
+						observer.onError(error)
+					}
+				})
+			
+			return Disposables.create()
+		}
 	}
 }
