@@ -34,6 +34,16 @@ class ChatRoomViewController: UIViewController {
 		// Dispose of any resources that can be recreated.
 	}
 	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		self.tabBarController?.tabBar.isHidden = false
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		self.tabBarController?.tabBar.isHidden = true
+	}
+	
 }
 
 extension ChatRoomViewController {
@@ -41,9 +51,13 @@ extension ChatRoomViewController {
 		tableView.separatorColor = UIColor.clear
 		tableView.estimatedRowHeight = 10000
 		tableView.rowHeight = UITableViewAutomaticDimension
-		
 		tableView.register(UINib(nibName: "YourChatViewCell", bundle: nil), forCellReuseIdentifier: "YourChat")
 		tableView.register(UINib(nibName: "MyChatViewCell", bundle: nil), forCellReuseIdentifier: "MyChat")
+		
+		let frame = CGRect(x: 0, y: self.view.frame.height-50, width: self.view.frame.width, height: 50)
+		let bottomView = KeyboardUpperView(frame: frame)
+		bottomView.chatTextField.inputAccessoryView = KeyboardUpperView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50))
+		self.view.addSubview(bottomView)
 	}
 }
 
