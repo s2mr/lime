@@ -1,5 +1,5 @@
 //
-//  KeyboardUpperView.swift
+//  ChatRoomInputView.swift
 //  lime
 //
 //  Created by 下村一将 on 2017/10/30.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class KeyboardUpperView: UIView {
+class ChatRoomInputView: UIView {
 	
 	@IBOutlet weak var chatTextField: UITextField!
 	@IBOutlet weak var sendButton: UIButton!
@@ -24,7 +24,7 @@ class KeyboardUpperView: UIView {
 	}
 	
 	func setFromXib() {
-		let nib = UINib.init(nibName: "KeyboardUpperView", bundle: nil)
+		let nib = UINib.init(nibName: "ChatRoomInputView", bundle: nil)
 		let view = nib.instantiate(withOwner: self, options: nil).first as! UIView
 		self.addSubview(view)
 	}

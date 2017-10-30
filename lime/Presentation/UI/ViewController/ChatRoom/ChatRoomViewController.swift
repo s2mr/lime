@@ -13,8 +13,9 @@ protocol ChatRoomViewInput: class {
 }
 
 class ChatRoomViewController: UIViewController {
-	
+
 	@IBOutlet weak var tableView: UITableView!
+	var bottomView: ChatRoomInputView!
 	
 	var presenter: ChatRoomPresenter?
 	var chats: [ChatEntity] = []
@@ -51,13 +52,25 @@ extension ChatRoomViewController {
 		tableView.separatorColor = UIColor.clear
 		tableView.estimatedRowHeight = 10000
 		tableView.rowHeight = UITableViewAutomaticDimension
+		tableView.allowsSelection = false
+		
 		tableView.register(UINib(nibName: "YourChatViewCell", bundle: nil), forCellReuseIdentifier: "YourChat")
 		tableView.register(UINib(nibName: "MyChatViewCell", bundle: nil), forCellReuseIdentifier: "MyChat")
 		
-		let frame = CGRect(x: 0, y: self.view.frame.height-50, width: self.view.frame.width, height: 50)
-		let bottomView = KeyboardUpperView(frame: frame)
-		bottomView.chatTextField.inputAccessoryView = KeyboardUpperView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50))
+		//FIXME: 2つのViewを生成しているため入力内容が一致しない。
+		self.bottomView = ChatRoomInputView(frame:
+			CGRect(x: 0, y: self.view.frame.height-50, width: self.view.frame.width, height: 50))
+		bottomView.chatTextField.inputAccessoryView =
+			ChatRoomInputView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50))
 		self.view.addSubview(bottomView)
+		
+		let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.backgroundTapped))
+		tapRecognizer.cancelsTouchesInView = false // TableViewへタップイベントを流す
+		self.tableView.addGestureRecognizer(tapRecognizer)
+	}
+	
+	@objc func backgroundTapped() {
+		self.bottomView.chatTextField.resignFirstResponder()
 	}
 }
 
