@@ -8,6 +8,14 @@
 
 import Unbox
 
+public struct FriendsEntity: Unboxable {
+	var friends: [FriendEntity]
+	
+	public init(unboxer: Unboxer) throws {
+		friends = try unboxer.unbox(key: "users")
+	}
+}
+
 public struct FriendEntity {
 	var userId		= ""
 	var screenName	= ""
@@ -24,9 +32,9 @@ public struct FriendEntity {
 
 extension FriendEntity: Unboxable  {
 	public init(unboxer: Unboxer) throws {
-		self.userId = try unboxer.unbox(key: "")
-		self.screenName = try unboxer.unbox(key: "")
-		self.name = try unboxer.unbox(key: "")
-		self.statusText = try unboxer.unbox(key: "")
+		self.userId = try unboxer.unbox(key: "id")
+		self.screenName = try unboxer.unbox(key: "screenName")
+		self.name = try unboxer.unbox(key: "name")
+		self.statusText = try unboxer.unbox(key: "statusText")
 	}
 }

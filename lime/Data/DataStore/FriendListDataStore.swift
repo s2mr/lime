@@ -35,10 +35,12 @@ struct FriendListDataStoreImpl: FriendListDataStore {
 			.subscribe(onNext: {
 				print("onNext")
 				print("print response")
-				print($0.name)
-				print($0.screenName)
-				print($0.statusText)
-				print($0.userId)
+				$0.friends.forEach({ f in
+					print(f.name)
+					print(f.screenName)
+					print(f.statusText)
+					print(f.userId)
+				})
 			}, onError: {
 				print("error", $0)
 			}, onCompleted: {
