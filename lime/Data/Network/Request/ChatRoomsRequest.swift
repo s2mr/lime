@@ -1,8 +1,8 @@
 //
-//  User.swift
+//  ChatRoomsRequest.swift
 //  lime
 //
-//  Created by 下村一将 on 2017/10/29.
+//  Created by 下村一将 on 2017/11/01.
 //  Copyright © 2017 kazu. All rights reserved.
 //
 
@@ -10,15 +10,15 @@ import Foundation
 import Alamofire
 
 public extension LimeAPI {
-	struct FriendsRequest: LimeAPIRequest {
+	struct ChatRoomsRequest {
 	}
 }
 
-extension LimeAPI.FriendsRequest {
-	typealias Response = UsersEntity
+extension LimeAPI.ChatRoomsRequest: LimeAPIRequest {
+	typealias Response = ChatRoomsEntity
 	
 	var path: String {
-		return "/friends"
+		return "/chatRooms"
 	}
 	
 	var method: HTTPMethod {

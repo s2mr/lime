@@ -17,7 +17,7 @@ class ChatRoomListViewController: UIViewController {
 	@IBOutlet weak var tableView: UITableView!
 	
 	var presenter: ChatRoomListPresenter?
-	var chatRooms: [ChatRoomViewModel] = [] // Todo: use viewmodel
+	var chatRooms: [ChatRoomViewModel] = []
 	
 	public func inject(presenter: ChatRoomListPresenter) {
 		self.presenter = presenter

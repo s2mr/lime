@@ -18,7 +18,7 @@ struct ChatRoomDataStoreImpl: ChatRoomDataStore {
 		let chat1 = ChatEntity(text: "text1", time: "12:23", userType: UserType.You)
 		let chat2 = ChatEntity(text: "text2", time: "12:33", userType: UserType.I)
 		let chat3 = ChatEntity(text: "text3", time: "12:43", userType: UserType.You)
-		let chatRoom = ChatRoomEntity(friend: friend, currentText: "currentTxt", chats: [chat1,chat2,chat3])
+		let chatRoom = ChatRoomEntity(id: 1, friend: friend, currentText: "currentTxt", chats: [chat1,chat2,chat3])
 		
 		return Observable.create({ (observer) -> Disposable in
 			observer.onNext(chatRoom)
