@@ -1,5 +1,5 @@
 //
-//  FriendEntity.swift
+//  UsersEntity.swift
 //  lime
 //
 //  Created by 下村一将 on 2017/10/18.
@@ -8,15 +8,15 @@
 
 import Unbox
 
-public struct FriendsEntity: Unboxable {
-	var friends: [FriendEntity]
+public struct UsersEntity: Unboxable {
+	var users: [UserEntity]
 	
 	public init(unboxer: Unboxer) throws {
-		friends = try unboxer.unbox(key: "users")
+		users = try unboxer.unbox(key: "users")
 	}
 }
 
-public struct FriendEntity {
+public struct UserEntity {
 	var userId		= ""
 	var screenName	= ""
 	var name		= ""
@@ -30,7 +30,7 @@ public struct FriendEntity {
 	}
 }
 
-extension FriendEntity: Unboxable  {
+extension UserEntity: Unboxable  {
 	public init(unboxer: Unboxer) throws {
 		self.userId = try unboxer.unbox(key: "id")
 		self.screenName = try unboxer.unbox(key: "screenName")

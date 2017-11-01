@@ -9,7 +9,7 @@
 import RxSwift
 
 public protocol FriendListRepository {
-	func getFriendList() -> Observable<[FriendEntity]>
+	func getFriendList() -> Observable<[UserEntity]>
 }
 
 struct FriendListRepositoryImpl: FriendListRepository {
@@ -19,7 +19,7 @@ struct FriendListRepositoryImpl: FriendListRepository {
 		self.dataStore = dataStore
 	}
 	
-	func getFriendList() -> Observable<[FriendEntity]> {
+	func getFriendList() -> Observable<[UserEntity]> {
 		return dataStore.getFriendList()
 	}
 }

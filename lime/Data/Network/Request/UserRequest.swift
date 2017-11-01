@@ -16,7 +16,7 @@ public extension LimeAPI {
 }
 
 extension LimeAPI.UserRequest {
-	typealias Response = FriendsEntity
+	typealias Response = UsersEntity
 	
 	var path: String {
 		return "/users"

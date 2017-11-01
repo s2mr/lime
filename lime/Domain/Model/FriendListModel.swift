@@ -18,7 +18,7 @@ struct FriendModel: FriendListViewModel {
 	var userId: String
 	var statusText: String
 	
-	init(friendModel: FriendEntity) {
+	init(friendModel: UserEntity) {
 		name = friendModel.name
 		screenName = friendModel.screenName
 		userId = friendModel.userId

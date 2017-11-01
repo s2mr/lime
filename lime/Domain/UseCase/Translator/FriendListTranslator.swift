@@ -9,10 +9,10 @@
 import Foundation
 
 struct FriendListTranslator: Translator {
-	typealias Input = [FriendEntity]
+	typealias Input = [UserEntity]
 	typealias Output = FriendListModel
 	
-	func translate(_ entities: [FriendEntity]) throws -> FriendListModel {
+	func translate(_ entities: [UserEntity]) throws -> FriendListModel {
 		var friendListModel = FriendListModel()
 		entities.forEach { entity -> () in
 			let friendModel = FriendModel(friendModel: entity)

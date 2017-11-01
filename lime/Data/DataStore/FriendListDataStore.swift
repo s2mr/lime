@@ -11,15 +11,15 @@ import Alamofire
 
 public protocol FriendListDataStore {
 	// FIXME: use User
-	func getFriendList() -> Observable<[FriendEntity]>
+	func getFriendList() -> Observable<[UserEntity]>
 }
 
 struct FriendListDataStoreImpl: FriendListDataStore {
 	private let api = LimeAPI()
 	let disposeBag = DisposeBag()
 	
-	func getFriendList() -> Observable<[FriendEntity]> {
-		let friend = FriendEntity(userId: "", screenName: "masa", name: "kazu", statusText: "yeaaah")
+	func getFriendList() -> Observable<[UserEntity]> {
+		let friend = UserEntity(userId: "", screenName: "masa", name: "kazu", statusText: "yeaaah")
 		let fl = [friend]
 		
 		return Observable.create({ (observer) -> Disposable in
@@ -35,7 +35,7 @@ struct FriendListDataStoreImpl: FriendListDataStore {
 			.subscribe(onNext: {
 				print("onNext")
 				print("print response")
-				$0.friends.forEach({ f in
+				$0.users.forEach({ f in
 					print(f.name)
 					print(f.screenName)
 					print(f.statusText)
