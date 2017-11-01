@@ -10,6 +10,7 @@
 import Foundation
 import Alamofire
 import RxSwift
+import Unbox
 
 protocol LimeAPIRespondable: APIRespondable {
 	var keyPathForResponse: String? { get }
@@ -20,14 +21,24 @@ extension LimeAPIRespondable {
 	var keyPathForResponse: String? {
 		return "data"
 	}
+	
+	fileprivate func validateResponse(_ json: Any?) throws -> UnboxableDictionary {
+		guard let json = json as? UnboxableDictionary else {
+			throw UnboxError.invalidData
+		}
+		return json
+	}
 }
 
-extension LimeAPIRespondable {
+extension LimeAPIRespondable where Response: Unboxable {
 	//Todo: use unbox
 	func response(from json: Any?) throws -> Response {
-		print("[response]", json!)
-		
-		return json as! Self.Response
+		let json = try validateResponse(json)
+		if let keyPath = keyPathForResponse {
+			return try unbox(dictionary: json, atKeyPath: keyPath)
+		} else {
+			return try unbox(dictionary: json)
+		}
 	}
 }
 
@@ -47,11 +58,11 @@ public class LimeAPI: API {
 	func send<Req: LimeAPIRequest>(_ request: Req) -> Observable<Req.Response> {
 		let url: URL = baseURL.appendingPathComponent(request.path)
 		
-		return Observable.create { observer -> Disposable in
+		return Observable<Req.Response>.create { observer -> Disposable in
 			Alamofire.request(url, method: request.method, parameters: request.parameters,
 			                  encoding: request.encoding, headers: request.headers)
 				.responseJSON(completionHandler: { response in
-					print(response)
+					print(".responseJSON")
 					switch response.result {
 					case .success(let value):
 						do {

@@ -16,6 +16,7 @@ public protocol FriendListDataStore {
 
 struct FriendListDataStoreImpl: FriendListDataStore {
 	private let api = LimeAPI()
+	let disposeBag = DisposeBag()
 	
 	func getFriendList() -> Observable<[FriendEntity]> {
 		let friend = FriendEntity(userId: "", screenName: "masa", name: "kazu", statusText: "yeaaah")
@@ -28,13 +29,22 @@ struct FriendListDataStoreImpl: FriendListDataStore {
 	}
 	
 	func getUser(id: Int) -> () {
-		let disposeBag = DisposeBag()
-		api.send(LimeAPI.UserRequest(id: 100)).subscribe(onNext: {
-			print("onNext")
-			print($0)
-		}, onError: nil, onCompleted: nil, onDisposed: nil)
-		.disposed(by: disposeBag)
+		
+		// TODO: どっかでdispose
+		api.send(LimeAPI.UserRequest(id: 100))
+			.subscribe(onNext: {
+				print("onNext")
+				print("print response")
+				print($0.name)
+				print($0.screenName)
+				print($0.statusText)
+				print($0.userId)
+			}, onError: {
+				print("error", $0)
+			}, onCompleted: {
+				print("completed")
+			}, onDisposed: {
+				print("disposed")
+			})
 	}
-	
-	
 }
