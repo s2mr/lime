@@ -7,11 +7,13 @@ PODS:
     - RxSwift (~> 4.0.0-rc.0)
   - RxSwift (4.0.0-rc.0)
   - SwiftyJSON (3.1.4)
+  - Unbox (2.5.0)
 
 DEPENDENCIES:
   - AlamofireSwiftyJSON
   - RxCocoa (from `https://github.com/ReactiveX/RxSwift`, branch `rxswift4.0-swift4.0`)
   - RxSwift (from `https://github.com/ReactiveX/RxSwift`, branch `rxswift4.0-swift4.0`)
+  - Unbox
 
 EXTERNAL SOURCES:
   RxCocoa:
@@ -35,7 +37,8 @@ SPEC CHECKSUMS:
   RxCocoa: 58841348f4c6e6f6cd244522c16a6b7df5008956
   RxSwift: f0ff3c78e1f71a7d3506defde0b79c72fe39bac3
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  Unbox: 30e437e6151a6de16139375fd4e8dd9a664cfbf7
 
-PODFILE CHECKSUM: fffe7082b239ac66a5ae2366210571d3c3c25a7d
+PODFILE CHECKSUM: 33a91c0b8565a215d215bb65f2b716c5e8884d76
 
 COCOAPODS: 1.2.1

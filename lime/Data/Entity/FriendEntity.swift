@@ -6,6 +6,8 @@
 //  Copyright © 2017 kazu. All rights reserved.
 //
 
+import Unbox
+
 public struct FriendEntity {
 	var userId		= ""
 	var screenName	= ""
@@ -17,5 +19,14 @@ public struct FriendEntity {
 		self.screenName = screenName
 		self.name = name
 		self.statusText = statusText
+	}
+}
+
+extension FriendEntity: Unboxable  {
+	public init(unboxer: Unboxer) throws {
+		self.userId = try unboxer.unbox(key: "")
+		self.screenName = try unboxer.unbox(key: "")
+		self.name = try unboxer.unbox(key: "")
+		self.statusText = try unboxer.unbox(key: "")
 	}
 }
