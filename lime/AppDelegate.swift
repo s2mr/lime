@@ -18,8 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		window?.rootViewController = MainTabBarBuilder().build()
 		
-		FriendListDataStoreImpl().getUser(id: 100)
-		
 		return true
 	}
 

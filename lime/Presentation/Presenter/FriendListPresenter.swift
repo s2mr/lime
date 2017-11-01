@@ -34,7 +34,7 @@ class FriendListPresenterImpl: FriendListPresenter {
 					self?.loadedFriendListModel(friendList: friendList)
 				},
 				onError: { error in
-					NSLog("Error")
+					print(error)
 				},
 				onCompleted: nil,
 				onDisposed: nil)

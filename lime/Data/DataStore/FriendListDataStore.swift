@@ -16,37 +16,9 @@ public protocol FriendListDataStore {
 
 struct FriendListDataStoreImpl: FriendListDataStore {
 	private let api = LimeAPI()
-	let disposeBag = DisposeBag()
 	
 	func getFriendList() -> Observable<[UserEntity]> {
-		let friend = UserEntity(userId: "", screenName: "masa", name: "kazu", statusText: "yeaaah")
-		let fl = [friend]
-		
-		return Observable.create({ (observer) -> Disposable in
-			observer.onNext(fl)
-			return Disposables.create()
-		})
-	}
-	
-	func getUser(id: Int) -> () {
-		
-		// TODO: どっかでdispose
-		api.send(LimeAPI.UserRequest(id: 100))
-			.subscribe(onNext: {
-				print("onNext")
-				print("print response")
-				$0.users.forEach({ f in
-					print(f.name)
-					print(f.screenName)
-					print(f.statusText)
-					print(f.userId)
-				})
-			}, onError: {
-				print("error", $0)
-			}, onCompleted: {
-				print("completed")
-			}, onDisposed: {
-				print("disposed")
-			})
+		return api.send(LimeAPI.FriendsRequest())
+			.map{ $0.users }
 	}
 }

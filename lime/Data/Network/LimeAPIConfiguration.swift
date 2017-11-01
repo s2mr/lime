@@ -19,6 +19,6 @@ public extension LimeAPI.Configuration {
 	static var `default`: LimeAPI.Configuration {
 		let sessionConfiguration: URLSessionConfiguration = .default
 		return LimeAPI.Configuration(sessionConfiguration: sessionConfiguration,
-		                             baseURL: URL(string: "https://lime-server-stg.herokuapp.com/v1")! )
+		                             baseURL: URL(string: "https://lime-server-stg.herokuapp.com/api/v1")! )
 	}
 }

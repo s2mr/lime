@@ -10,16 +10,15 @@ import Foundation
 import Alamofire
 
 public extension LimeAPI {
-	struct UserRequest: LimeAPIRequest {
-		let id: Int
+	struct FriendsRequest: LimeAPIRequest {
 	}
 }
 
-extension LimeAPI.UserRequest {
+extension LimeAPI.FriendsRequest {
 	typealias Response = UsersEntity
 	
 	var path: String {
-		return "/users"
+		return "/friends"
 	}
 	
 	var method: HTTPMethod {
@@ -31,8 +30,6 @@ extension LimeAPI.UserRequest {
 	}
 	
 	var parameters: Parameters? {
-		return [
-			"id": id
-		]
+		return nil
 	}
 }

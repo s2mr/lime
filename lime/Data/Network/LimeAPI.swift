@@ -31,7 +31,6 @@ extension LimeAPIRespondable {
 }
 
 extension LimeAPIRespondable where Response: Unboxable {
-	//Todo: use unbox
 	func response(from json: Any?) throws -> Response {
 		let json = try validateResponse(json)
 		if let keyPath = keyPathForResponse {
@@ -59,23 +58,24 @@ public class LimeAPI: API {
 		let url: URL = baseURL.appendingPathComponent(request.path)
 		
 		return Observable<Req.Response>.create { observer -> Disposable in
-			Alamofire.request(url, method: request.method, parameters: request.parameters,
-			                  encoding: request.encoding, headers: request.headers)
-				.responseJSON(completionHandler: { response in
-					print(".responseJSON")
-					switch response.result {
-					case .success(let value):
-						do {
-							let res = try request.response(from: value)
-							observer.onNext(res)
-							observer.onCompleted()
-						} catch let error {
-							observer.onError(error)
-						}
-					case .failure(let error):
+			let req = Alamofire.request(url, method: request.method, parameters: request.parameters,
+			                            encoding: request.encoding, headers: request.headers)
+			print(req.debugDescription)
+			req.responseJSON(completionHandler: { response in
+				print(response.debugDescription)
+				switch response.result {
+				case .success(let value):
+					do {
+						let res = try request.response(from: value)
+						observer.onNext(res)
+						observer.onCompleted()
+					} catch let error {
 						observer.onError(error)
 					}
-				})
+				case .failure(let error):
+					observer.onError(error)
+				}
+			})
 			
 			return Disposables.create()
 		}
