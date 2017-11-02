@@ -53,6 +53,9 @@ class FriendListViewController: UIViewController {
 
 extension FriendListViewController {
 	func setupUI() {
+		tableView.register(UINib(nibName: "FriendListViewCell", bundle: nil),
+		                   forCellReuseIdentifier: "FriendListViewCell")
+		tableView.rowHeight = 70
 	}
 }
 
