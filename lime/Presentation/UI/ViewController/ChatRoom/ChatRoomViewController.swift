@@ -45,6 +45,13 @@ class ChatRoomViewController: UIViewController {
 		self.tabBarController?.tabBar.isHidden = true
 	}
 	
+	override var canBecomeFirstResponder: Bool {
+		return true
+	}
+	
+	override var inputAccessoryView: UIView? {
+		return bottomView
+	}
 }
 
 extension ChatRoomViewController {
@@ -53,16 +60,12 @@ extension ChatRoomViewController {
 		tableView.estimatedRowHeight = 10000
 		tableView.rowHeight = UITableViewAutomaticDimension
 		tableView.allowsSelection = false
+		tableView.keyboardDismissMode = .interactive
 		
 		tableView.register(UINib(nibName: "YourChatViewCell", bundle: nil), forCellReuseIdentifier: "YourChat")
 		tableView.register(UINib(nibName: "MyChatViewCell", bundle: nil), forCellReuseIdentifier: "MyChat")
 		
-		//FIXME: 2つのViewを生成しているため入力内容が一致しない。
-		self.bottomView = ChatRoomInputView(frame:
-			CGRect(x: 0, y: self.view.frame.height-50, width: self.view.frame.width, height: 50))
-		bottomView.chatTextField.inputAccessoryView =
-			ChatRoomInputView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50))
-		self.view.addSubview(bottomView)
+		self.bottomView = ChatRoomInputView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50))
 		
 		let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.backgroundTapped))
 		tapRecognizer.cancelsTouchesInView = false // TableViewへタップイベントを流す
@@ -70,7 +73,7 @@ extension ChatRoomViewController {
 	}
 	
 	@objc func backgroundTapped() {
-		self.bottomView.chatTextField.resignFirstResponder()
+		print("backgroundTapped()")
 	}
 }
 
@@ -101,6 +104,10 @@ extension ChatRoomViewController: UITableViewDataSource {
 extension ChatRoomViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		print(indexPath)
+	}
+	
+	func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+//		self.bottomView.chatTextField.resignFirstResponder()
 	}
 }
 
