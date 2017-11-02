@@ -34,8 +34,8 @@ class ChatRoomPresenterImpl: ChatRoomPresenter {
 					// Notice: chatRoomModelのラベルがないと'extra argument onerror in call'が出るぞ
 					self?.loadedChatRoom(chatRoomModel: chat)
 					//Todo
-				}, onError: { [weak self] error in
-					print(error)
+				}, onError: {
+					print($0)
 				}, onCompleted: nil, onDisposed: nil
 			)
 			.disposed(by: disposeBag)
