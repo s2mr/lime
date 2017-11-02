@@ -11,6 +11,7 @@ import RxSwift
 
 protocol ChatRoomPresenter {
 	func loadChatRoom()
+	func sendMessage(message: String)
 }
 
 class ChatRoomPresenterImpl: ChatRoomPresenter {
@@ -39,6 +40,10 @@ class ChatRoomPresenterImpl: ChatRoomPresenter {
 				}, onCompleted: nil, onDisposed: nil
 			)
 			.disposed(by: disposeBag)
+	}
+	
+	func sendMessage(message: String) {
+		print(message)
 	}
 }
 
