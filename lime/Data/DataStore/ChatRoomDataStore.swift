@@ -10,19 +10,33 @@ import RxSwift
 
 public protocol ChatRoomDataStore {
 	func getChatRoom() -> Observable<ChatRoomEntity>
+	func sendChat(chat: ChatEntity) -> Observable<ChatRoomEntity>
 }
 
-struct ChatRoomDataStoreImpl: ChatRoomDataStore {
-	func getChatRoom() -> Observable<ChatRoomEntity> {
-		let friend = UserEntity(userId: "userId", screenName: "screenName", name: "name", statusText: "nemui")
+class ChatRoomDataStoreImpl: ChatRoomDataStore {
+	var chatRoom: ChatRoomEntity
+	
+	init() {
 		let chat1 = ChatEntity(text: "text1", time: "12:23", userType: UserType.You)
 		let chat2 = ChatEntity(text: "text2", time: "12:33", userType: UserType.I)
 		let chat3 = ChatEntity(text: "text3", time: "12:43", userType: UserType.You)
-		let chatRoom = ChatRoomEntity(id: 1, friend: friend, currentText: "currentTxt", chats: [chat1,chat2,chat3])
-		
+		let chats = [chat1,chat2, chat3]
+		let friend = UserEntity(userId: "userId", screenName: "screenName", name: "name", statusText: "nemui")
+		chatRoom = ChatRoomEntity(id: 1, friend: friend, currentText: "currentTxt", chats: chats)
+	}
+	
+	func getChatRoom() -> Observable<ChatRoomEntity> {
 		return Observable.create({ (observer) -> Disposable in
-			observer.onNext(chatRoom)
+			observer.onNext(self.chatRoom)
 			return Disposables.create()
 		})
+	}
+	
+	func sendChat(chat: ChatEntity) -> Observable<ChatRoomEntity> {
+		self.chatRoom.chats.append(chat)
+		return Observable.create {
+			$0.onNext(self.chatRoom)
+			return Disposables.create()
+		}
 	}
 }

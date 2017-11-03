@@ -12,6 +12,7 @@ import RxCocoa
 
 protocol ChatRoomUseCase {
 	func loadChatRoom() -> Observable<ChatRoomModel>
+	func sendChat(chat: ChatEntity) -> Observable<ChatRoomModel>
 }
 
 class ChatRoomUseCaseImpl: ChatRoomUseCase {
@@ -23,6 +24,11 @@ class ChatRoomUseCaseImpl: ChatRoomUseCase {
 	
 	func loadChatRoom() -> Observable<ChatRoomModel> {
 		return chatRoomRepository.getChatRoom()
+			.map(translator: ChatRoomTranslator())
+	}
+	
+	func sendChat(chat: ChatEntity) -> Observable<ChatRoomModel> {
+		return chatRoomRepository.sendChat(chat: chat)
 			.map(translator: ChatRoomTranslator())
 	}
 }

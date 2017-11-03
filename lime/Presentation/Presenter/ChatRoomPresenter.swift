@@ -29,7 +29,7 @@ class ChatRoomPresenterImpl: ChatRoomPresenter {
 	}
 	
 	func loadChatRoom() {
-		useCase.loadChatRoom()
+		useCase.loadChatRoom()	
 			.subscribe(
 				onNext: { [weak self] chat in
 					// Notice: chatRoomModelのラベルがないと'extra argument onerror in call'が出るぞ
@@ -43,7 +43,18 @@ class ChatRoomPresenterImpl: ChatRoomPresenter {
 	}
 	
 	func sendMessage(message: String) {
-		print(message)
+		let date = Date()
+		let calendar = Calendar.current
+		useCase.sendChat(chat:
+			ChatEntity(text: message,
+			           time: "\(calendar.component(.hour, from: date)):\(calendar.component(.hour, from: date))"
+				, userType: .I))
+			.subscribe(
+				onNext: { [weak self] chatRoom in
+					self?.loadedChatRoom(chatRoomModel: chatRoom)
+				}
+			)
+			.disposed(by: disposeBag)
 	}
 }
 

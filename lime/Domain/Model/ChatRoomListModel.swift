@@ -27,6 +27,3 @@ struct ChatRoomModel: ChatRoomListViewModel {
 	}
 }
 
-struct ChatsModel {
-	
-}
