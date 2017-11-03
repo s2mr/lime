@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ChatRoomViewModel {
+protocol ChatRoomListViewModel {
 	var userScreenName: String { get }
 	var date: String { get }
 	var currentText: String { get }

@@ -43,6 +43,7 @@
 		6E48F99A1F97C98D0051E02F /* ChatRoomListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E48F9991F97C98D0051E02F /* ChatRoomListViewCell.swift */; };
 		6E4CE3771F9A51C500172ADD /* ChatRoomListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4CE3761F9A51C500172ADD /* ChatRoomListViewModel.swift */; };
 		6E4CE3791F9A52BB00172ADD /* ChatRoomListTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4CE3781F9A52BB00172ADD /* ChatRoomListTranslator.swift */; };
+		6E7654491FAC6B0E003868B7 /* ChatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7654481FAC6B0E003868B7 /* ChatRoomViewModel.swift */; };
 		6E769C151FA0C4F500C205BF /* YourChatViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E769C131FA0C4F500C205BF /* YourChatViewCell.swift */; };
 		6E769C161FA0C4F500C205BF /* YourChatViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E769C141FA0C4F500C205BF /* YourChatViewCell.xib */; };
 		6E769C1B1FA0C52000C205BF /* MyChatViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E769C191FA0C52000C205BF /* MyChatViewCell.swift */; };
@@ -127,6 +128,7 @@
 		6E48F9991F97C98D0051E02F /* ChatRoomListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomListViewCell.swift; sourceTree = "<group>"; };
 		6E4CE3761F9A51C500172ADD /* ChatRoomListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomListViewModel.swift; sourceTree = "<group>"; };
 		6E4CE3781F9A52BB00172ADD /* ChatRoomListTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomListTranslator.swift; sourceTree = "<group>"; };
+		6E7654481FAC6B0E003868B7 /* ChatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewModel.swift; sourceTree = "<group>"; };
 		6E769C131FA0C4F500C205BF /* YourChatViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourChatViewCell.swift; sourceTree = "<group>"; };
 		6E769C141FA0C4F500C205BF /* YourChatViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YourChatViewCell.xib; sourceTree = "<group>"; };
 		6E769C191FA0C52000C205BF /* MyChatViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatViewCell.swift; sourceTree = "<group>"; };
@@ -431,6 +433,7 @@
 			children = (
 				6E1135F21F979301001AD3BA /* FriendListViewModel.swift */,
 				6E4CE3761F9A51C500172ADD /* ChatRoomListViewModel.swift */,
+				6E7654481FAC6B0E003868B7 /* ChatRoomViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -868,6 +871,7 @@
 				6E48F98B1F97C1910051E02F /* ChatRoomViewController.swift in Sources */,
 				6EECF6241F961F6300474622 /* MainTabBarWireframe.swift in Sources */,
 				6E48F98F1F97C1CA0051E02F /* ChatRoomWireframe.swift in Sources */,
+				6E7654491FAC6B0E003868B7 /* ChatRoomViewModel.swift in Sources */,
 				6E340F031FA612340054DE43 /* LimeAPI.swift in Sources */,
 				6E48F99A1F97C98D0051E02F /* ChatRoomListViewCell.swift in Sources */,
 				6E0471341FA1092200F457B4 /* ChatRoomUseCase.swift in Sources */,
@@ -1033,6 +1037,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TKM4VSA3YF;
 				INFOPLIST_FILE = lime/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kazu.lime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1049,6 +1054,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TKM4VSA3YF;
 				INFOPLIST_FILE = lime/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kazu.lime;
 				PRODUCT_NAME = "$(TARGET_NAME)";

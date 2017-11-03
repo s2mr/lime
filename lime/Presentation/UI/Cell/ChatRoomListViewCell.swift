@@ -21,7 +21,7 @@ class ChatRoomListViewCell: UITableViewCell {
 		dateLabel.textColor = UIColor(displayP3Red: 184/255, green: 189/255, blue: 199/255, alpha: 1)
 	}
 	
-	func updateCell(_ chatRoom: ChatRoomViewModel) {
+	func updateCell(_ chatRoom: ChatRoomListViewModel) {
 		self.userNameLabel?.text = chatRoom.userScreenName
 		self.currentTextLabel.text = chatRoom.currentText
 		self.dateLabel.text = chatRoom.date

@@ -17,7 +17,7 @@ class ChatRoomListViewController: UIViewController {
 	@IBOutlet weak var tableView: UITableView!
 	
 	var presenter: ChatRoomListPresenter?
-	var chatRooms: [ChatRoomViewModel] = []
+	var chatRooms: [ChatRoomListViewModel] = []
 	
 	public func inject(presenter: ChatRoomListPresenter) {
 		self.presenter = presenter
@@ -54,7 +54,7 @@ extension ChatRoomListViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "ChatRoomList") as! ChatRoomListViewCell
 		
-		let chatRoom: ChatRoomViewModel = chatRooms[indexPath.row]
+		let chatRoom: ChatRoomListViewModel = chatRooms[indexPath.row]
 		cell.updateCell(chatRoom)
 		
 		return cell

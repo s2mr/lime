@@ -12,7 +12,7 @@ struct ChatRoomListModel {
 	var chatRoomList: [ChatRoomModel] = []
 }
 
-struct ChatRoomModel: ChatRoomViewModel {
+struct ChatRoomModel: ChatRoomListViewModel {
 	var userScreenName: String
 	var date: String
 	var currentText: String
