@@ -43,6 +43,7 @@ class ChatRoomPresenterImpl: ChatRoomPresenter {
 	}
 	
 	func sendMessage(message: String) {
+		self.wireframe.viewController?.bottomView.chatTextField.text = ""
 		let date = Date()
 		let calendar = Calendar.current
 		useCase.sendChat(chat:

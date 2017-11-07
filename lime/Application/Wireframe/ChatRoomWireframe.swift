@@ -14,6 +14,4 @@ protocol ChatRoomWireframe: class {
 
 class ChatRoomWireframeImpl: ChatRoomWireframe {
 	var viewController: ChatRoomViewController?
-	
-	
 }
