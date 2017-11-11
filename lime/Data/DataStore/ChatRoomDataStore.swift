@@ -15,6 +15,8 @@ public protocol ChatRoomDataStore {
 
 class ChatRoomDataStoreImpl: ChatRoomDataStore {
 	var chatRoom: ChatRoomEntity
+    let api = LimeAPI()
+    let disposeBag = DisposeBag()
 	
 	init() {
 		let chat1 = ChatEntity(text: "text1", time: "12:23", userType: UserType.You)
@@ -34,6 +36,12 @@ class ChatRoomDataStoreImpl: ChatRoomDataStore {
 	
 	func sendChat(chat: ChatEntity) -> Observable<ChatRoomEntity> {
 		self.chatRoom.chats.append(chat)
+        
+        // サーバに送信
+        api.send(LimeAPI.ChatSendRequest(chat: chat))
+            .subscribe{print($0)}
+            .disposed(by: disposeBag)
+        
 		return Observable.create {
 			$0.onNext(self.chatRoom)
 			return Disposables.create()

@@ -41,7 +41,7 @@ extension LimeAPIRespondable where Response: Unboxable {
 	}
 }
 
-protocol LimeAPIRequest: APIRequest, LimeAPIRespondable {}
+protocol LimeAPIRequest: LimeAPIRespondable, APIRequest {}
 
 public class LimeAPI: API {
 	var sessionConfiguration: URLSessionConfiguration

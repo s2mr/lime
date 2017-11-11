@@ -32,6 +32,7 @@
 		6E340EFF1FA6056A0054DE43 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E340EFE1FA6056A0054DE43 /* API.swift */; };
 		6E340F011FA608320054DE43 /* LimeAPIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E340F001FA608320054DE43 /* LimeAPIConfiguration.swift */; };
 		6E340F031FA612340054DE43 /* LimeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E340F021FA612340054DE43 /* LimeAPI.swift */; };
+		6E4519D61FB70A6A00E4A14B /* ChatSendRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4519D51FB70A6A00E4A14B /* ChatSendRequest.swift */; };
 		6E48F9891F97C1830051E02F /* ChatRoom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E48F9881F97C1830051E02F /* ChatRoom.storyboard */; };
 		6E48F98B1F97C1910051E02F /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E48F98A1F97C1910051E02F /* ChatRoomViewController.swift */; };
 		6E48F98D1F97C1BC0051E02F /* ChatRoomBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E48F98C1F97C1BC0051E02F /* ChatRoomBuilder.swift */; };
@@ -117,6 +118,7 @@
 		6E340EFE1FA6056A0054DE43 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		6E340F001FA608320054DE43 /* LimeAPIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimeAPIConfiguration.swift; sourceTree = "<group>"; };
 		6E340F021FA612340054DE43 /* LimeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimeAPI.swift; sourceTree = "<group>"; };
+		6E4519D51FB70A6A00E4A14B /* ChatSendRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSendRequest.swift; sourceTree = "<group>"; };
 		6E48F9881F97C1830051E02F /* ChatRoom.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatRoom.storyboard; sourceTree = "<group>"; };
 		6E48F98A1F97C1910051E02F /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
 		6E48F98C1F97C1BC0051E02F /* ChatRoomBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomBuilder.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 			children = (
 				6E340EFB1FA603AF0054DE43 /* FriendsRequest.swift */,
 				6EF7C98B1FAA073E00B77925 /* ChatRoomsRequest.swift */,
+				6E4519D51FB70A6A00E4A14B /* ChatSendRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -873,6 +876,7 @@
 				6E48F98F1F97C1CA0051E02F /* ChatRoomWireframe.swift in Sources */,
 				6E7654491FAC6B0E003868B7 /* ChatRoomViewModel.swift in Sources */,
 				6E340F031FA612340054DE43 /* LimeAPI.swift in Sources */,
+				6E4519D61FB70A6A00E4A14B /* ChatSendRequest.swift in Sources */,
 				6E48F99A1F97C98D0051E02F /* ChatRoomListViewCell.swift in Sources */,
 				6E0471341FA1092200F457B4 /* ChatRoomUseCase.swift in Sources */,
 				6E1135F31F979301001AD3BA /* FriendListViewModel.swift in Sources */,
