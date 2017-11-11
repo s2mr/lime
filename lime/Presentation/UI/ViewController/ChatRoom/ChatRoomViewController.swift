@@ -68,7 +68,7 @@ extension ChatRoomViewController {
 		tableView.register(UINib(nibName: "YourChatViewCell", bundle: nil), forCellReuseIdentifier: "YourChat")
 		tableView.register(UINib(nibName: "MyChatViewCell", bundle: nil), forCellReuseIdentifier: "MyChat")
 		
-		self.bottomView = ChatRoomInputView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50))
+		self.bottomView = ChatRoomInputView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 70))
 		self.bottomView.sendButton.rx.tap
 			.subscribe(onNext: { [weak self] in
 				self?.presenter?.sendMessage(message: (self?.bottomView.chatTextField.text!)!)
