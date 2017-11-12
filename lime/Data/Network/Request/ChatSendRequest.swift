@@ -36,6 +36,9 @@ extension LimeAPI.ChatSendRequest: LimeAPIRequest {
     
     var parameters: Parameters? {
         return ["text" : chat.text,
-                "time" : chat.time]
+                "time" : chat.time,
+                "chat-room-id": chat.chatRoomId,
+                "speaker-id": chat.speakerId,
+                ]
     }
 }
