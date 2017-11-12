@@ -96,15 +96,15 @@ extension ChatRoomViewController: UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let chat = self.chats[indexPath.row]
-		if chat.userType == .You {
-			let cell = tableView.dequeueReusableCell(withIdentifier: "YourChat") as! YourChatViewCell
-			cell.updateCell(text: chat.text, time: chat.time)
-			return cell
+		if chat.isMyChat() {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MyChat") as! MyChatViewCell
+            // Todo: isRead
+            cell.updateCell(text: chat.text, time: chat.time, isRead: true)
+            return cell
 		} else {
-			let cell = tableView.dequeueReusableCell(withIdentifier: "MyChat") as! MyChatViewCell
-			// Todo: isRead
-			cell.updateCell(text: chat.text, time: chat.time, isRead: true)
-			return cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "YourChat") as! YourChatViewCell
+            cell.updateCell(text: chat.text, time: chat.time)
+            return cell
 		}
 	}
 }

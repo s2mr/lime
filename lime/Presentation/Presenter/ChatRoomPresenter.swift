@@ -48,8 +48,7 @@ class ChatRoomPresenterImpl: ChatRoomPresenter {
 		let calendar = Calendar.current
 		useCase.sendChat(chat:
 			ChatEntity(text: message,
-			           time: "\(calendar.component(.hour, from: date)):\(calendar.component(.hour, from: date))"
-				, userType: .I))
+                       time: "\(calendar.component(.hour, from: date)):\(calendar.component(.hour, from: date))", chatRoomId: 0, speakerId: 0))
 			.subscribe(
 				onNext: { [weak self] chatRoom in
 					self?.loadedChatRoom(chatRoomModel: chatRoom)

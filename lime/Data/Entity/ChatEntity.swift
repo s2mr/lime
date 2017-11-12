@@ -11,13 +11,22 @@ import Foundation
 public struct ChatEntity {
 	var text = ""
 	var time = ""
-	var userType: UserType
+    var chatRoomId: Int
+    var speakerId: Int
+//    var userType: UserType
 	
-	public init(text: String, time: String, userType: UserType) {
+    public init(text: String, time: String, chatRoomId: Int, speakerId: Int) {
 		self.text = text
 		self.time = time
-		self.userType = userType
+        self.chatRoomId = chatRoomId
+        self.speakerId = speakerId
+//        self.userType = userType
 	}
+    
+    public func isMyChat() -> Bool {
+        let myId = 0
+        return speakerId == myId
+    }
 }
 
 public enum UserType {
