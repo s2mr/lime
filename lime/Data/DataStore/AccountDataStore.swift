@@ -13,7 +13,12 @@ public protocol AccountDataStore {
 	func getAccountInfo() -> Observable<AccountEntity>
 }
 
-public struct AccountDataStoreImpl: AccountDataStore {
+public class AccountDataStoreImpl: AccountDataStore {
+	
+	static var shared = AccountDataStoreImpl()
+	
+	private init(){}
+	
 	public func getAccountInfo() -> Observable<AccountEntity> {
 		return Observable.create{ obserber in
 			

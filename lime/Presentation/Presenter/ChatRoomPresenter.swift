@@ -49,9 +49,22 @@ class ChatRoomPresenterImpl: ChatRoomPresenter {
 		self.wireframe.viewController?.bottomView.chatTextField.text = ""
 		let date = Date()
 		let calendar = Calendar.current
+		var accountEntity: AccountEntity?
+		useCase.getAccountInfo()
+			.subscribe(onNext: { ae in
+				accountEntity = ae
+			})
+			.disposed(by: disposeBag)
+		
+		guard let _ = accountEntity else {
+			return
+		}
+		
+		print("[UserId]",accountEntity!.userId)
 		useCase.sendChat(chat:
 			ChatEntity(text: message,
-					   time: "\(calendar.component(.hour, from: date)):\(calendar.component(.minute, from: date))", chatRoomId: chatRoomModel!.id, speakerId: 10))
+					   time: "\(calendar.component(.hour, from: date)):\(calendar.component(.minute, from: date))",
+				chatRoomId: chatRoomModel!.id, speakerId: accountEntity!.userId))
 			.subscribe(
 				onNext: { [weak self] chatRoom in
 					self?.loadedChatRoom(chatRoomModel: chatRoom)

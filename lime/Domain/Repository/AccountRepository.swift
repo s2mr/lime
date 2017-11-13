@@ -14,9 +14,8 @@ public protocol AccountRepository {
 }
 
 public struct AccountRepositoryImpl: AccountRepository {
-	private let dataStore: AccountDataStore
 	
 	public func getAccountInfo() -> Observable<AccountEntity> {
-		return dataStore.getAccountInfo()
+		return  AccountDataStoreImpl.shared.getAccountInfo()
 	}
 }
