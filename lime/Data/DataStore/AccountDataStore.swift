@@ -15,18 +15,13 @@ public protocol AccountDataStore {
 
 public class AccountDataStoreImpl: AccountDataStore {
 	
+	fileprivate let api = LimeAPI()
+	
 	static var shared = AccountDataStoreImpl()
 	
 	private init(){}
 	
 	public func getAccountInfo() -> Observable<AccountEntity> {
-		return Observable.create{ obserber in
-			
-			let accountEntity = AccountEntity(userId: 10)
-			
-			obserber.onNext(accountEntity)
-			
-			return Disposables.create()
-		}
+		return api.send(LimeAPI.AccountGetInfoRequest(uuid: "123a"))
 	}
 }
