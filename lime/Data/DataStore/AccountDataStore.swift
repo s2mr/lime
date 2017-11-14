@@ -25,7 +25,8 @@ public class AccountDataStoreImpl: AccountDataStore {
 		if let ae = accountEntity {
 			return ae
 		} else {
-			accountEntity = api.send(LimeAPI.AccountGetInfoRequest(uuid: "123a"))
+			let uuid = UUID().uuidString
+			accountEntity = api.send(LimeAPI.AccountGetInfoRequest(uuid: uuid))
 			return accountEntity!
 		}
 	}
