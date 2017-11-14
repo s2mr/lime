@@ -31,7 +31,8 @@ protocol APIRequest: APIRespondable {
 
 extension APIRequest {
 	var encoding: ParameterEncoding {
-		return JSONEncoding.default
+//		return JSONEncoding.default
+		return URLEncoding.methodDependent
 	}
 	
 	public func validate(statusCode: Int) -> Bool {

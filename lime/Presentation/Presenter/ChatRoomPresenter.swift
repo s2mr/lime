@@ -62,14 +62,11 @@ class ChatRoomPresenterImpl: ChatRoomPresenter {
 		}
 		
 		print("[UserId]",accountEntity!.userId)
-		useCase.sendChat(chat:
-			ChatEntity(text: message,
-					   time: "\(calendar.component(.hour, from: date)):\(calendar.component(.minute, from: date))",
-				chatRoomId: chatRoomModel!.id, speakerId: accountEntity!.userId))
 		
 		useCase.sendChat(chat:
 			ChatEntity(text: message,
-					   time: "\(calendar.component(.hour, from: date)):\(calendar.component(.minute, from: date))", chatRoomId: 0, speakerId: 10))
+					   time: "\(calendar.component(.hour, from: date)):\(calendar.component(.minute, from: date))",
+						chatRoomId: chatRoomModel!.id, speakerId: accountEntity!.userId))
 			.subscribe(
 				onNext: { [weak self] chatRoom in
 					self?.loadedChatRoom(chatRoomModel: chatRoom)
