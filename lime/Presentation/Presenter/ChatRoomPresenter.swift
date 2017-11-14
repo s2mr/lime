@@ -54,24 +54,18 @@ class ChatRoomPresenterImpl: ChatRoomPresenter {
 		useCase.getAccountInfo()
 			.subscribe(onNext: { ae in
 				accountEntity = ae
+				
+				self.useCase.sendChat(chat:
+					ChatEntity(text: message,
+							   time: "\(calendar.component(.hour, from: date)):\(calendar.component(.minute, from: date))",
+						chatRoomId: self.chatRoomModel!.id, speakerId: accountEntity!.userId))
+					.subscribe(
+						onNext: { [weak self] chatRoom in
+							self?.loadedChatRoom(chatRoomModel: chatRoom)
+						}
+					)
+					.disposed(by: self.disposeBag)
 			})
-			.disposed(by: disposeBag)
-		
-		guard let _ = accountEntity else {
-			return
-		}
-		
-		print("[UserId]",accountEntity!.userId)
-		
-		useCase.sendChat(chat:
-			ChatEntity(text: message,
-					   time: "\(calendar.component(.hour, from: date)):\(calendar.component(.minute, from: date))",
-						chatRoomId: chatRoomModel!.id, speakerId: accountEntity!.userId))
-			.subscribe(
-				onNext: { [weak self] chatRoom in
-					self?.loadedChatRoom(chatRoomModel: chatRoom)
-				}
-			)
 			.disposed(by: disposeBag)
 	}
 }
