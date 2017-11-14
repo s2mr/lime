@@ -10,35 +10,35 @@ import Foundation
 import Alamofire
 
 public extension LimeAPI{
-    struct ChatSendRequest {
-        let chat: ChatEntity
-    }
+	struct ChatSendRequest {
+		let chat: ChatEntity
+	}
 }
 
 extension LimeAPI.ChatSendRequest: LimeAPIRequest {
-    func response(from: Any?) throws -> Bool {
-        return from as! Bool
-    }
-    
-    typealias Response = Bool
-
-    var path: String {
-        return "/chat"
-    }
-    
-    var method: HTTPMethod {
-        return .post
-    }
-    
-    var headers: HTTPHeaders? {
-        return nil
-    }
-    
-    var parameters: Parameters? {
-        return ["text" : chat.text,
-                "time" : chat.time,
-                "chat-room-id": chat.chatRoomId,
-                "speaker-id": chat.speakerId,
-                ]
-    }
+	func response(from: Any?) throws -> Bool {
+		return from as! Bool
+	}
+	
+	typealias Response = Bool
+	
+	var path: String {
+		return "/chat"
+	}
+	
+	var method: HTTPMethod {
+		return .post
+	}
+	
+	var headers: HTTPHeaders? {
+		return nil
+	}
+	
+	var parameters: Parameters? {
+		return ["text" : chat.text,
+				"time" : chat.time,
+				"chat-room-id": chat.chatRoomId,
+				"speaker-id": chat.speakerId,
+		]
+	}
 }
