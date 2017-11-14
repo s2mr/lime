@@ -16,7 +16,8 @@ struct ChatRoomBuilder {
 		let useCase = ChatRoomUseCaseImpl(
 			chatRoomRepository: ChatRoomRepositoryImpl(
 				dataStore: ChatRoomDataStoreImpl()
-			)
+			),
+			accountRepository: AccountRepositoryImpl()
 		)
 		
 		let presenter = ChatRoomPresenterImpl(viewInput: viewController, wireframe: wireframe, useCase: useCase)

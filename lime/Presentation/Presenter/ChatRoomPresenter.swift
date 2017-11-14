@@ -22,6 +22,8 @@ class ChatRoomPresenterImpl: ChatRoomPresenter {
 	
 	fileprivate let disposeBag = DisposeBag()
 	
+	var chatRoomModel: ChatRoomModel?
+	
 	public required init(viewInput: ChatRoomViewInput, wireframe: ChatRoomWireframe, useCase: ChatRoomUseCase) {
 		self.viewInput = viewInput
 		self.useCase = useCase
@@ -31,9 +33,10 @@ class ChatRoomPresenterImpl: ChatRoomPresenter {
 	func loadChatRoom() {
 		useCase.loadChatRoom()	
 			.subscribe(
-				onNext: { [weak self] chat in
+				onNext: { [weak self] cml in
+					self?.chatRoomModel = cml
 					// Notice: chatRoomModelのラベルがないと'extra argument onerror in call'が出るぞ
-					self?.loadedChatRoom(chatRoomModel: chat)
+					self?.loadedChatRoom(chatRoomModel: cml)
 					//Todo
 				}, onError: {
 					print($0)
@@ -46,9 +49,22 @@ class ChatRoomPresenterImpl: ChatRoomPresenter {
 		self.wireframe.viewController?.bottomView.chatTextField.text = ""
 		let date = Date()
 		let calendar = Calendar.current
+		var accountEntity: AccountEntity?
+		useCase.getAccountInfo()
+			.subscribe(onNext: { ae in
+				accountEntity = ae
+			})
+			.disposed(by: disposeBag)
+		
+		guard let _ = accountEntity else {
+			return
+		}
+		
+		print("[UserId]",accountEntity!.userId)
 		useCase.sendChat(chat:
 			ChatEntity(text: message,
-                       time: "\(calendar.component(.hour, from: date)):\(calendar.component(.minute, from: date))", chatRoomId: 0, speakerId: 0))
+					   time: "\(calendar.component(.hour, from: date)):\(calendar.component(.minute, from: date))",
+				chatRoomId: chatRoomModel!.id, speakerId: accountEntity!.userId))
 			.subscribe(
 				onNext: { [weak self] chatRoom in
 					self?.loadedChatRoom(chatRoomModel: chatRoom)

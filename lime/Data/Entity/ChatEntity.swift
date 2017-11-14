@@ -24,7 +24,7 @@ public struct ChatEntity {
 	}
     
     public func isMyChat() -> Bool {
-        let myId = 0
+        let myId = 10
         return speakerId == myId
     }
 }
