@@ -16,11 +16,7 @@ public extension LimeAPI{
 }
 
 extension LimeAPI.ChatSendRequest: LimeAPIRequest {
-	func response(from: Any?) throws -> Bool {
-		return from as! Bool
-	}
-	
-	typealias Response = Bool
+	typealias Response = Void
 	
 	var path: String {
 		return "/chat"

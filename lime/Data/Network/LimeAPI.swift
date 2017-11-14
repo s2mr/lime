@@ -41,6 +41,16 @@ extension LimeAPIRespondable where Response: Unboxable {
 	}
 }
 
+extension LimeAPIRespondable where Response == Void {
+	var keyPathForResponse: String? {
+		return nil
+	}
+	
+	func response(from json: Any?) throws -> Response {
+		_ = try validateResponse(json)
+	}
+}
+
 protocol LimeAPIRequest: LimeAPIRespondable, APIRequest {}
 
 public class LimeAPI: API {

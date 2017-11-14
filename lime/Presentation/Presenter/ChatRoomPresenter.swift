@@ -40,7 +40,7 @@ class ChatRoomPresenterImpl: ChatRoomPresenter {
 					//Todo
 				}, onError: {
 					print($0)
-				}, onCompleted: nil, onDisposed: nil
+			}, onCompleted: nil, onDisposed: nil
 			)
 			.disposed(by: disposeBag)
 	}
@@ -49,6 +49,7 @@ class ChatRoomPresenterImpl: ChatRoomPresenter {
 		self.wireframe.viewController?.bottomView.chatTextField.text = ""
 		let date = Date()
 		let calendar = Calendar.current
+		
 		var accountEntity: AccountEntity?
 		useCase.getAccountInfo()
 			.subscribe(onNext: { ae in
@@ -65,6 +66,10 @@ class ChatRoomPresenterImpl: ChatRoomPresenter {
 			ChatEntity(text: message,
 					   time: "\(calendar.component(.hour, from: date)):\(calendar.component(.minute, from: date))",
 				chatRoomId: chatRoomModel!.id, speakerId: accountEntity!.userId))
+		
+		useCase.sendChat(chat:
+			ChatEntity(text: message,
+					   time: "\(calendar.component(.hour, from: date)):\(calendar.component(.minute, from: date))", chatRoomId: 0, speakerId: 10))
 			.subscribe(
 				onNext: { [weak self] chatRoom in
 					self?.loadedChatRoom(chatRoomModel: chatRoom)
