@@ -48,6 +48,7 @@
 		6E48F99A1F97C98D0051E02F /* ChatRoomListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E48F9991F97C98D0051E02F /* ChatRoomListViewCell.swift */; };
 		6E4CE3771F9A51C500172ADD /* ChatRoomListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4CE3761F9A51C500172ADD /* ChatRoomListViewModel.swift */; };
 		6E4CE3791F9A52BB00172ADD /* ChatRoomListTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4CE3781F9A52BB00172ADD /* ChatRoomListTranslator.swift */; };
+		6E5AB4C81FBC708700A39925 /* BalloonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5AB4C71FBC708600A39925 /* BalloonView.swift */; };
 		6E7654491FAC6B0E003868B7 /* ChatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7654481FAC6B0E003868B7 /* ChatRoomViewModel.swift */; };
 		6E769C151FA0C4F500C205BF /* YourChatViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E769C131FA0C4F500C205BF /* YourChatViewCell.swift */; };
 		6E769C161FA0C4F500C205BF /* YourChatViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E769C141FA0C4F500C205BF /* YourChatViewCell.xib */; };
@@ -138,6 +139,7 @@
 		6E48F9991F97C98D0051E02F /* ChatRoomListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomListViewCell.swift; sourceTree = "<group>"; };
 		6E4CE3761F9A51C500172ADD /* ChatRoomListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomListViewModel.swift; sourceTree = "<group>"; };
 		6E4CE3781F9A52BB00172ADD /* ChatRoomListTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomListTranslator.swift; sourceTree = "<group>"; };
+		6E5AB4C71FBC708600A39925 /* BalloonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonView.swift; sourceTree = "<group>"; };
 		6E7654481FAC6B0E003868B7 /* ChatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewModel.swift; sourceTree = "<group>"; };
 		6E769C131FA0C4F500C205BF /* YourChatViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourChatViewCell.swift; sourceTree = "<group>"; };
 		6E769C141FA0C4F500C205BF /* YourChatViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YourChatViewCell.xib; sourceTree = "<group>"; };
@@ -460,6 +462,7 @@
 			children = (
 				6E8B6F5C1FA76086004819D6 /* ChatRoomInputView.xib */,
 				6E8B6F5E1FA7616D004819D6 /* ChatRoomInputView.swift */,
+				6E5AB4C71FBC708600A39925 /* BalloonView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -875,6 +878,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E5AB4C81FBC708700A39925 /* BalloonView.swift in Sources */,
 				6E4519DC1FB8A59700E4A14B /* AccountEntity.swift in Sources */,
 				6EECF6261F96200200474622 /* FriendListViewController.swift in Sources */,
 				6EECF6361F9634CA00474622 /* FriendListWireframe.swift in Sources */,

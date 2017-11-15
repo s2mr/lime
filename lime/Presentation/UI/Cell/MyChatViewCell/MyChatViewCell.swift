@@ -19,6 +19,7 @@ class MyChatViewCell: UITableViewCell {
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		self.backgroundColor = UIColor.clear
+		self.textView.layer.cornerRadius = 15
 	}
 	
 	override func setSelected(_ selected: Bool, animated: Bool) {

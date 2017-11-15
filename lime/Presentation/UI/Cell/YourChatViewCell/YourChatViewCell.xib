@@ -21,13 +21,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:11" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIM-6a-C8j">
-                        <rect key="frame" x="259" y="49.5" width="30" height="17"/>
+                        <rect key="frame" x="263" y="49.5" width="30" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="あいうえおあいうえおあいうえおあいうえおあいうえお" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="A2E-Gd-WZd">
-                        <rect key="frame" x="46" y="8" width="206" height="59"/>
+                        <rect key="frame" x="50" y="8" width="206" height="59"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="206" id="0oc-Rq-f2B"/>
@@ -51,7 +51,7 @@
                     <constraint firstItem="mIM-6a-C8j" firstAttribute="leading" secondItem="A2E-Gd-WZd" secondAttribute="trailing" constant="7" id="bCV-0s-Oip"/>
                     <constraint firstAttribute="bottom" secondItem="A2E-Gd-WZd" secondAttribute="bottom" constant="8" id="c7d-KZ-QSx"/>
                     <constraint firstItem="72Q-Ig-mPD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="fPD-H6-dED"/>
-                    <constraint firstItem="A2E-Gd-WZd" firstAttribute="leading" secondItem="72Q-Ig-mPD" secondAttribute="trailing" constant="8" id="q7g-P6-g3h"/>
+                    <constraint firstItem="A2E-Gd-WZd" firstAttribute="leading" secondItem="72Q-Ig-mPD" secondAttribute="trailing" constant="12" id="q7g-P6-g3h"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

@@ -14,16 +14,16 @@ class YourChatViewCell: UITableViewCell {
 	@IBOutlet weak var timeLabel: UILabel!
 	@IBOutlet weak var textViewWidthConstraint: NSLayoutConstraint!
 	
-	@IBOutlet weak var a: UILabel!
-	
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		self.backgroundColor = UIColor.clear
+		self.textView.layer.cornerRadius = 15
+		
+		self.addSubview(YourBalloonView(frame: CGRect(x: textView.frame.minX-10, y: textView.frame.minY-10, width: 50, height: 50)))
 	}
 	
 	override func setSelected(_ selected: Bool, animated: Bool) {
 		super.setSelected(selected, animated: animated)
-		
 		// Configure the view for the selected state
 	}
 	
