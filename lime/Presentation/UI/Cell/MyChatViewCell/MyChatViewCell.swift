@@ -20,6 +20,7 @@ class MyChatViewCell: UITableViewCell {
 		super.awakeFromNib()
 		self.backgroundColor = UIColor.clear
 		self.textView.layer.cornerRadius = 15
+		addSubview(MyBalloonView(frame: CGRect(x: Int(frame.size.width+30), y: 0, width: 30, height: 30)))
 	}
 	
 	override func setSelected(_ selected: Bool, animated: Bool) {
