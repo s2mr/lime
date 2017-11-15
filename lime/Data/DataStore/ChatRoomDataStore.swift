@@ -28,7 +28,7 @@ class ChatRoomDataStoreImpl: ChatRoomDataStore {
 今度かそっか？😉
 """, time: "12:33", chatRoomId: 0, speakerId: 2))
 		chats.append(ChatEntity(text: "いっつも本読んでるね", time: "12:43", chatRoomId: 0, speakerId: 10))
-		let friend = UserEntity(userId: "userId", screenName: "screenName", name: "name", statusText: "nemui")
+		let friend = UserEntity(userId: "userId", screenName: "たろー", name: "name", statusText: "nemui")
 		chatRoom = ChatRoomEntity(id: 1, friend: friend, currentText: "currentTxt", chats: chats)
 	}
 	

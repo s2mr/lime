@@ -15,8 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 	var window: UIWindow?
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-		// Override point for customization after application launch.
 		window?.rootViewController = MainTabBarBuilder().build()
+		
+		UIApplication.shared.statusBarStyle = .lightContent
 		
 		if #available(iOS 10.0, *) {
 			//ios10
