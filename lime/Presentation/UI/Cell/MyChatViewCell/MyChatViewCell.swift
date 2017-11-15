@@ -14,6 +14,8 @@ class MyChatViewCell: UITableViewCell {
 	@IBOutlet weak var timeLabel: UILabel!
 	@IBOutlet weak var readLabel: UILabel!
 	
+	@IBOutlet weak var textViewWidthConstraint: NSLayoutConstraint!
+	
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		self.backgroundColor = UIColor.clear
@@ -31,5 +33,9 @@ extension MyChatViewCell {
 		self.textView?.text = text
 		self.timeLabel?.text = time
 		self.readLabel?.isHidden = !isRead
+		
+		let frame = CGSize(width: self.frame.width - 8, height: CGFloat.greatestFiniteMagnitude)
+		let rect = self.textView.sizeThatFits(frame)
+		textViewWidthConstraint.constant = rect.width
 	}
 }

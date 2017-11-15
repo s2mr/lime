@@ -12,7 +12,9 @@ class YourChatViewCell: UITableViewCell {
 	
 	@IBOutlet weak var textView: UITextView!
 	@IBOutlet weak var timeLabel: UILabel!
+	@IBOutlet weak var textViewWidthConstraint: NSLayoutConstraint!
 	
+	@IBOutlet weak var a: UILabel!
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()
@@ -31,5 +33,9 @@ extension YourChatViewCell {
 	func updateCell(text: String, time: String) {
 		self.textView?.text = text
 		self.timeLabel?.text = time
+		
+		let frame = CGSize(width: self.frame.width, height: CGFloat.greatestFiniteMagnitude)
+		let rect = self.textView.sizeThatFits(frame)
+		textViewWidthConstraint.constant = rect.width
 	}
 }

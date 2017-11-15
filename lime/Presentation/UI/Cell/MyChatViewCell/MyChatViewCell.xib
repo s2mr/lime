@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,20 +21,23 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Read" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dvv-yt-Fc9">
-                        <rect key="frame" x="47" y="24.5" width="33" height="17"/>
+                        <rect key="frame" x="63" y="27.5" width="33" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:11" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="reE-h5-yb6">
-                        <rect key="frame" x="50" y="49" width="30" height="17"/>
+                        <rect key="frame" x="66" y="46.5" width="30" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="あいうえおあいうえおあいうえおあいうえおあいうえお" translatesAutoresizingMaskIntoConstraints="NO" id="iEI-QC-LKY">
-                        <rect key="frame" x="88" y="8" width="224" height="58.5"/>
+                        <rect key="frame" x="104" y="11" width="200" height="53"/>
                         <color key="backgroundColor" red="0.52156862745098043" green="0.88627450980392153" blue="0.28627450980392155" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="200" id="vKG-Wq-FRf"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name=".HiraKakuInterface-W3" family=".Hiragino Kaku Gothic Interface" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
@@ -43,11 +46,10 @@
                 <constraints>
                     <constraint firstAttribute="bottomMargin" secondItem="iEI-QC-LKY" secondAttribute="bottom" id="DHm-G5-O1j"/>
                     <constraint firstItem="iEI-QC-LKY" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="G8B-De-1Hd"/>
-                    <constraint firstItem="reE-h5-yb6" firstAttribute="top" secondItem="dvv-yt-Fc9" secondAttribute="bottom" constant="8" id="YHW-vx-Gib"/>
+                    <constraint firstItem="reE-h5-yb6" firstAttribute="top" secondItem="dvv-yt-Fc9" secondAttribute="bottom" constant="2" id="YHW-vx-Gib"/>
                     <constraint firstItem="iEI-QC-LKY" firstAttribute="leading" secondItem="reE-h5-yb6" secondAttribute="trailing" constant="8" id="bzZ-3v-bNT"/>
                     <constraint firstItem="iEI-QC-LKY" firstAttribute="leading" secondItem="dvv-yt-Fc9" secondAttribute="trailing" constant="8" id="j1V-pM-IYx"/>
                     <constraint firstItem="iEI-QC-LKY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="pgY-yo-3Tq"/>
-                    <constraint firstItem="iEI-QC-LKY" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.7" id="rZ5-pw-8gG"/>
                     <constraint firstItem="reE-h5-yb6" firstAttribute="bottom" secondItem="iEI-QC-LKY" secondAttribute="bottom" id="z9W-KJ-2Fz"/>
                 </constraints>
             </tableViewCellContentView>
@@ -55,6 +57,7 @@
             <connections>
                 <outlet property="readLabel" destination="dvv-yt-Fc9" id="cia-dG-yot"/>
                 <outlet property="textView" destination="iEI-QC-LKY" id="AFi-2b-atq"/>
+                <outlet property="textViewWidthConstraint" destination="vKG-Wq-FRf" id="cM9-Tz-TZY"/>
                 <outlet property="timeLabel" destination="reE-h5-yb6" id="7La-lb-Pwv"/>
             </connections>
             <point key="canvasLocation" x="34" y="38.5"/>
