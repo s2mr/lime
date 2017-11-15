@@ -7,23 +7,24 @@
 //
 
 import Foundation
+import RxSwift
 
 struct ChatRoomListModel {
 	var chatRoomList: [ChatRoomModel] = []
 }
 
 struct ChatRoomModel: ChatRoomListViewModel {
-    var id: Int
+	var id: Int
 	var userScreenName: String
 	var date: String
 	var currentText: String
 	var chats: [ChatEntity]
 	
 	init(chatRoomModel: ChatRoomEntity) {
-        self.id = chatRoomModel.id
+		self.id = chatRoomModel.id
 		self.currentText = chatRoomModel.currentText
 		// Todo:
-		self.date = "Today"
+		self.date = chatRoomModel.recentTime() ?? ""
 		self.userScreenName = chatRoomModel.friend.screenName
 		self.chats = chatRoomModel.chats
 	}

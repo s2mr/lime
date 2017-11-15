@@ -35,5 +35,9 @@ public struct ChatRoomEntity: Unboxable {
 		self.currentText = try unboxer.unbox(key: "currentText")
 		self.chats = []
 	}
+	
+	public func recentTime() -> String? {
+		return self.chats.last?.time
+	}
 }
 

@@ -16,7 +16,7 @@ protocol ChatRoomViewInput: class {
 class ChatRoomViewController: UIViewController {
 	
 	fileprivate let disposeBag = DisposeBag()
-
+	
 	@IBOutlet weak var tableView: UITableView!
 	var bottomView: ChatRoomInputView!
 	
@@ -97,14 +97,14 @@ extension ChatRoomViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let chat = self.chats[indexPath.row]
 		if chat.isMyChat() {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MyChat") as! MyChatViewCell
-            // Todo: isRead
-            cell.updateCell(text: chat.text, time: chat.time, isRead: true)
-            return cell
+			let cell = tableView.dequeueReusableCell(withIdentifier: "MyChat") as! MyChatViewCell
+			// Todo: isRead
+			cell.updateCell(text: chat.text, time: chat.time, isRead: true)
+			return cell
 		} else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "YourChat") as! YourChatViewCell
-            cell.updateCell(text: chat.text, time: chat.time)
-            return cell
+			let cell = tableView.dequeueReusableCell(withIdentifier: "YourChat") as! YourChatViewCell
+			cell.updateCell(text: chat.text, time: chat.time)
+			return cell
 		}
 	}
 }
@@ -115,7 +115,7 @@ extension ChatRoomViewController: UITableViewDelegate {
 	}
 	
 	func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-//		self.bottomView.chatTextField.resignFirstResponder()
+		//		self.bottomView.chatTextField.resignFirstResponder()
 	}
 }
 
