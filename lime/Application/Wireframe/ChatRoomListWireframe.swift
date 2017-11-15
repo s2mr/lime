@@ -18,9 +18,7 @@ class ChatRoomListWireframeImpl: ChatRoomListWireframe {
 	var viewController: ChatRoomListViewController?
 	
 	func showChatRoom() {
-		
 		let nextViewController = ChatRoomBuilder().build()
 		viewController?.navigationController?.pushViewController(nextViewController, animated: true)
-		
 	}
 }

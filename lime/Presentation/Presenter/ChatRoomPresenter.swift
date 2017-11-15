@@ -38,6 +38,7 @@ class ChatRoomPresenterImpl: ChatRoomPresenter {
 					// Notice: chatRoomModelのラベルがないと'extra argument onerror in call'が出るぞ
 					self?.loadedChatRoom(chatRoomModel: cml)
 					//Todo
+					self?.wireframe.viewController?.title = self?.chatRoomModel?.userScreenName
 				}, onError: {
 					print($0)
 			}, onCompleted: nil, onDisposed: nil
