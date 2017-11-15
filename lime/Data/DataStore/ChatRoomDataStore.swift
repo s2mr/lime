@@ -19,10 +19,15 @@ class ChatRoomDataStoreImpl: ChatRoomDataStore {
 	let disposeBag = DisposeBag()
 	
 	init() {
-		let chat1 = ChatEntity(text: "text1", time: "12:23", chatRoomId: 0, speakerId: 10)
-		let chat2 = ChatEntity(text: "text2", time: "12:33", chatRoomId: 0, speakerId: 2)
-		let chat3 = ChatEntity(text: "text3", time: "12:43", chatRoomId: 0, speakerId: 10)
-		let chats = [chat1,chat2, chat3]
+		var chats: [ChatEntity] = []
+		chats.append(ChatEntity(text: "今何してる？", time: "12:23", chatRoomId: 0, speakerId: 10))
+		chats.append(ChatEntity(text: "本読んでたよ〜", time: "12:33", chatRoomId: 0, speakerId: 2))
+		chats.append(ChatEntity(text: """
+この本まじ面白くて、
+読み出すと本当止まらないんだよね笑
+今度かそっか？😉
+""", time: "12:33", chatRoomId: 0, speakerId: 2))
+		chats.append(ChatEntity(text: "いっつも本読んでるね", time: "12:43", chatRoomId: 0, speakerId: 10))
 		let friend = UserEntity(userId: "userId", screenName: "screenName", name: "name", statusText: "nemui")
 		chatRoom = ChatRoomEntity(id: 1, friend: friend, currentText: "currentTxt", chats: chats)
 	}
