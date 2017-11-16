@@ -37,7 +37,10 @@ extension MyChatViewCell {
 		self.readLabel?.isHidden = !isRead
 		
 		let frame = CGSize(width: self.frame.width - 8, height: CGFloat.greatestFiniteMagnitude)
-		let rect = self.textView.sizeThatFits(frame)
+		var rect = self.textView.sizeThatFits(frame)
+		if(rect.width<30){
+			rect.width=30
+		}
 		textViewWidthConstraint.constant = rect.width
 	}
 }

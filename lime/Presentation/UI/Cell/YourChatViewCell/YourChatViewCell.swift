@@ -35,7 +35,10 @@ extension YourChatViewCell {
 		self.timeLabel?.text = time
 		
 		let frame = CGSize(width: self.frame.width, height: CGFloat.greatestFiniteMagnitude)
-		let rect = self.textView.sizeThatFits(frame)
+		var rect = self.textView.sizeThatFits(frame)
+		if(rect.width<30){
+			rect.width=30
+		}
 		textViewWidthConstraint.constant = rect.width
 	}
 }
