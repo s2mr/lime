@@ -28,6 +28,7 @@ class ChatRoomDataStoreImpl: ChatRoomDataStore {
 今度かそっか？😉
 """, time: "12:33", chatRoomId: 0, speakerId: 2))
 		chats.append(ChatEntity(text: "いっつも本読んでるね", time: "12:43", chatRoomId: 0, speakerId: 10))
+		
 		let friend = UserEntity(userId: "userId", screenName: "たろー", name: "name", statusText: "nemui")
 		chatRoom = ChatRoomEntity(id: 1, friend: friend, currentText: "currentTxt", chats: chats)
 	}
@@ -35,9 +36,26 @@ class ChatRoomDataStoreImpl: ChatRoomDataStore {
 	func getChatRoom() -> Observable<ChatRoomEntity> {
 		return Observable.create({ (observer) -> Disposable in
 			observer.onNext(self.chatRoom)
+			
+//			var count = 0
+//			Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { timer in
+//				
+//				if !timer.isValid {
+//					timer.fire()
+//				}
+//				
+//				
+//				
+//				self.chatRoom.chats.append(ChatEntity(text: "じぶんのテキスト", time: "12:33", chatRoomId: 0, speakerId: 10))
+//				self.chatRoom.chats.append(ChatEntity(text: "あいてのテキスト", time: "12:33", chatRoomId: 0, speakerId: 2))
+//				observer.onNext(self.chatRoom)
+//				count += 1
+//			})
+			
 			return Disposables.create()
 		})
 	}
+	
 	
 	func sendChat(chat: ChatEntity) -> Observable<ChatRoomEntity> {
 		return Observable.create( {observer in

@@ -95,14 +95,17 @@ extension ChatRoomViewController: UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		print(indexPath.row)
 		let chat = self.chats[indexPath.row]
 		if chat.isMyChat() {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "MyChat") as! MyChatViewCell
+			cell.clipsToBounds = true
 			// Todo: isRead
 			cell.updateCell(text: chat.text, time: chat.time, isRead: true)
 			return cell
 		} else {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "YourChat") as! YourChatViewCell
+			cell.clipsToBounds = true
 			cell.updateCell(text: chat.text, time: chat.time)
 			return cell
 		}
@@ -116,6 +119,10 @@ extension ChatRoomViewController: UITableViewDelegate {
 	
 	func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
 		//		self.bottomView.chatTextField.resignFirstResponder()
+	}
+	
+	func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+		return 10
 	}
 }
 
