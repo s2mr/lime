@@ -50,6 +50,7 @@
 		6E4CE3791F9A52BB00172ADD /* ChatRoomListTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4CE3781F9A52BB00172ADD /* ChatRoomListTranslator.swift */; };
 		6E5AB4C81FBC708700A39925 /* YourBalloonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5AB4C71FBC708600A39925 /* YourBalloonView.swift */; };
 		6E5AB4CA1FBC7FA300A39925 /* MyBalloonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5AB4C91FBC7FA300A39925 /* MyBalloonView.swift */; };
+		6E5AB4D01FBD52AD00A39925 /* send.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 6E5AB4CF1FBD52AC00A39925 /* send.m4a */; };
 		6E7654491FAC6B0E003868B7 /* ChatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7654481FAC6B0E003868B7 /* ChatRoomViewModel.swift */; };
 		6E769C151FA0C4F500C205BF /* YourChatViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E769C131FA0C4F500C205BF /* YourChatViewCell.swift */; };
 		6E769C161FA0C4F500C205BF /* YourChatViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E769C141FA0C4F500C205BF /* YourChatViewCell.xib */; };
@@ -142,6 +143,7 @@
 		6E4CE3781F9A52BB00172ADD /* ChatRoomListTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomListTranslator.swift; sourceTree = "<group>"; };
 		6E5AB4C71FBC708600A39925 /* YourBalloonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourBalloonView.swift; sourceTree = "<group>"; };
 		6E5AB4C91FBC7FA300A39925 /* MyBalloonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBalloonView.swift; sourceTree = "<group>"; };
+		6E5AB4CF1FBD52AC00A39925 /* send.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = send.m4a; sourceTree = "<group>"; };
 		6E7654481FAC6B0E003868B7 /* ChatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewModel.swift; sourceTree = "<group>"; };
 		6E769C131FA0C4F500C205BF /* YourChatViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourChatViewCell.swift; sourceTree = "<group>"; };
 		6E769C141FA0C4F500C205BF /* YourChatViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YourChatViewCell.xib; sourceTree = "<group>"; };
@@ -291,6 +293,22 @@
 			path = ChatRoomList;
 			sourceTree = "<group>";
 		};
+		6E5AB4CB1FBD502200A39925 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6E5AB4CC1FBD503100A39925 /* Sound */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		6E5AB4CC1FBD503100A39925 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				6E5AB4CF1FBD52AC00A39925 /* send.m4a */,
+			);
+			path = Sound;
+			sourceTree = "<group>";
+		};
 		6E769C171FA0C4FB00C205BF /* YourChatViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -389,6 +407,7 @@
 			children = (
 				6EFD370B1FBB372C0085DBAB /* lime.entitlements */,
 				6EECF5E91F95C06000474622 /* AppDelegate.swift */,
+				6E5AB4CB1FBD502200A39925 /* Resources */,
 				6EECF61E1F961DB800474622 /* Application */,
 				6EECF6171F9619A000474622 /* Presentation */,
 				6EAF57031F9762CC008EC349 /* Domain */,
@@ -696,6 +715,7 @@
 				6EF7C9B41FAB359D00B77925 /* FriendListViewCell.xib in Resources */,
 				6EECF5F11F95C06000474622 /* Assets.xcassets in Resources */,
 				6EECF62E1F96257A00474622 /* FriendList.storyboard in Resources */,
+				6E5AB4D01FBD52AD00A39925 /* send.m4a in Resources */,
 				6E48F9921F97C4060051E02F /* ChatRoomList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

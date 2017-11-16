@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import AVFoundation
 
 protocol ChatRoomUseCase {
 	func loadChatRoom() -> Observable<ChatRoomModel>
@@ -19,10 +20,23 @@ protocol ChatRoomUseCase {
 class ChatRoomUseCaseImpl: ChatRoomUseCase {
 	private let chatRoomRepository: ChatRoomRepository
 	private let accountRepository: AccountRepository
+	var audioPlayerInstance: AVAudioPlayer?
 	
 	public init(chatRoomRepository: ChatRoomRepository, accountRepository: AccountRepository) {
 		self.chatRoomRepository = chatRoomRepository
 		self.accountRepository = accountRepository
+		
+		// サウンドファイルのパスを生成
+		let soundFilePath = Bundle.main.path(forResource: "send", ofType: "m4a")!
+		let sound:URL = URL(fileURLWithPath: soundFilePath)
+		// AVAudioPlayerのインスタンスを作成
+		do {
+			audioPlayerInstance = try AVAudioPlayer(contentsOf: sound, fileTypeHint:nil)
+		} catch {
+			print("AVAudioPlayerインスタンス作成失敗")
+		}
+		// バッファに保持していつでも再生できるようにする
+		audioPlayerInstance?.prepareToPlay()
 	}
 	
 	func loadChatRoom() -> Observable<ChatRoomModel> {
@@ -31,11 +45,18 @@ class ChatRoomUseCaseImpl: ChatRoomUseCase {
 	}
 	
 	func sendChat(chat: ChatEntity) -> Observable<ChatRoomModel> {
+		playSendSound()
 		return chatRoomRepository.sendChat(chat: chat)
 			.map(translator: ChatRoomTranslator())
 	}
 	
 	func getAccountInfo() -> Observable<AccountEntity> {
 		return accountRepository.getAccountInfo()
+	}
+}
+
+extension ChatRoomUseCaseImpl {
+	private func playSendSound() {
+		audioPlayerInstance?.play()
 	}
 }
