@@ -39,3 +39,4 @@ Pods/*
 
 #Mac
 .DS_Store
+Secret.swift

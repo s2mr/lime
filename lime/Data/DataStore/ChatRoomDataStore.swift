@@ -40,16 +40,25 @@ class ChatRoomDataStoreImpl: ChatRoomDataStore {
 	}
 	
 	func sendChat(chat: ChatEntity) -> Observable<ChatRoomEntity> {
-		self.chatRoom.chats.append(chat)
-		
-		// サーバに送信
-		api.send(LimeAPI.ChatSendRequest(chat: chat))
-			.subscribe{print($0)}
-			.disposed(by: disposeBag)
-		
-		return Observable.create {
-			$0.onNext(self.chatRoom)
+		return Observable.create( {observer in
+			self.chatRoom.chats.append(chat)
+			observer.onNext(self.chatRoom)
+			// サーバに送信
+			self.api.send(LimeAPI.ChatSendRequest(chat: chat))
+				.subscribe{print($0)}
+				.disposed(by: self.disposeBag)
+			
+			//返信ボット
+			ChatAPI().sendChat(chatText: chat.text)
+				.subscribe(onNext: { str in
+					let reply = ChatEntity(text: str, time: chat.time, chatRoomId: chat.chatRoomId, speakerId: 2)
+					self.chatRoom.chats.append(reply)
+					
+					observer.onNext(self.chatRoom)
+				})
+				.disposed(by: self.disposeBag)
+			
 			return Disposables.create()
-		}
+		})
 	}
 }
