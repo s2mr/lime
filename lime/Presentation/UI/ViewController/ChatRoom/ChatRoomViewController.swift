@@ -18,6 +18,8 @@ class ChatRoomViewController: UIViewController {
 	fileprivate let disposeBag = DisposeBag()
 	
 	@IBOutlet weak var tableView: UITableView!
+	@IBOutlet weak var tableViewButtomConstraint: NSLayoutConstraint!
+	
 	var bottomView: ChatRoomInputView!
 	
 	var presenter: ChatRoomPresenter?
@@ -95,7 +97,6 @@ extension ChatRoomViewController: UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		print(indexPath.row)
 		let chat = self.chats[indexPath.row]
 		if chat.isMyChat() {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "MyChat") as! MyChatViewCell

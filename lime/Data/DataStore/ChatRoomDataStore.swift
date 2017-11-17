@@ -27,6 +27,10 @@ class ChatRoomDataStoreImpl: ChatRoomDataStore {
 読み出すと本当止まらないんだよね笑
 今度かそっか？😉
 """, time: "12:33", chatRoomId: 0, speakerId: 2))
+//		for i in 1...10000 {
+//			chats.append(ChatEntity(text: "りぷらい\(i)", time: "12:33", chatRoomId: 0, speakerId: 2))
+//			chats.append(ChatEntity(text: "じぶんのちゃっと\(i)", time: "12:33", chatRoomId: 0, speakerId: 10))
+//		}
 		chats.append(ChatEntity(text: "いっつも本読んでるね", time: "12:43", chatRoomId: 0, speakerId: 10))
 		
 		let friend = UserEntity(userId: "userId", screenName: "たろー", name: "name", statusText: "nemui")
@@ -43,9 +47,6 @@ class ChatRoomDataStoreImpl: ChatRoomDataStore {
 //				if !timer.isValid {
 //					timer.fire()
 //				}
-//				
-//				
-//				
 //				self.chatRoom.chats.append(ChatEntity(text: "じぶんのテキスト", time: "12:33", chatRoomId: 0, speakerId: 10))
 //				self.chatRoom.chats.append(ChatEntity(text: "あいてのテキスト", time: "12:33", chatRoomId: 0, speakerId: 2))
 //				observer.onNext(self.chatRoom)

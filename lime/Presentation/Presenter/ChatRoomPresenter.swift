@@ -15,19 +15,20 @@ protocol ChatRoomPresenter {
 }
 
 class ChatRoomPresenterImpl: ChatRoomPresenter {
-	
 	weak var viewInput: ChatRoomViewInput?
 	let wireframe: ChatRoomWireframe
 	let useCase: ChatRoomUseCase
 	
 	fileprivate let disposeBag = DisposeBag()
-	
 	var chatRoomModel: ChatRoomModel?
 	
 	public required init(viewInput: ChatRoomViewInput, wireframe: ChatRoomWireframe, useCase: ChatRoomUseCase) {
 		self.viewInput = viewInput
 		self.useCase = useCase
 		self.wireframe = wireframe
+		
+		NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 	}
 	
 	func loadChatRoom() {
@@ -74,5 +75,17 @@ class ChatRoomPresenterImpl: ChatRoomPresenter {
 extension ChatRoomPresenterImpl {
 	fileprivate func loadedChatRoom(chatRoomModel: ChatRoomModel) {
 		self.viewInput?.setChatRoom(chatRoomModel)
+	}
+	
+	@objc func keyboardWillShow(notification: Notification) {
+		if let userInfo = notification.userInfo {
+			if let keyboardFrameInfo = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+				self.wireframe.viewController?.tableViewButtomConstraint.constant = keyboardFrameInfo.cgRectValue.height
+			}
+		}
+	}
+	
+	@objc func keyboardWillHide(notification: Notification) {
+		self.wireframe.viewController?.tableViewButtomConstraint.constant = 0
 	}
 }
