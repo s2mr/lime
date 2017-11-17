@@ -80,12 +80,23 @@ extension ChatRoomPresenterImpl {
 	@objc func keyboardWillShow(notification: Notification) {
 		if let userInfo = notification.userInfo {
 			if let keyboardFrameInfo = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
-				self.wireframe.viewController?.tableViewButtomConstraint.constant = keyboardFrameInfo.cgRectValue.height
+				
+				if keyboardFrameInfo.cgRectValue.height <= 70 {
+					return
+				}
+				
+				self.wireframe.viewController?.tableViewButtomConstraint.constant = keyboardFrameInfo.cgRectValue.height - 35
+				if let vc = self.wireframe.viewController {
+					let indexPath = IndexPath(row: vc.chats.count-1, section: 0)
+					DispatchQueue.main.async {
+						vc.tableView.scrollToRow( at: indexPath, at: .bottom, animated: true)
+					}
+				}
 			}
 		}
 	}
 	
 	@objc func keyboardWillHide(notification: Notification) {
-		self.wireframe.viewController?.tableViewButtomConstraint.constant = 0
+		self.wireframe.viewController?.tableViewButtomConstraint.constant = 35
 	}
 }

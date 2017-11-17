@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="X14-I8-XLM">
-                                <rect key="frame" x="0.0" y="20" width="375" height="597"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="612"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <sections/>
                                 <connections>
@@ -32,7 +32,7 @@
                         <constraints>
                             <constraint firstItem="X14-I8-XLM" firstAttribute="top" secondItem="JGo-hq-iKu" secondAttribute="top" id="2ay-ab-2XZ"/>
                             <constraint firstItem="JGo-hq-iKu" firstAttribute="trailing" secondItem="X14-I8-XLM" secondAttribute="trailing" id="4jj-o7-tcE"/>
-                            <constraint firstItem="JGo-hq-iKu" firstAttribute="bottom" secondItem="X14-I8-XLM" secondAttribute="bottom" constant="50" id="JuW-T8-uID"/>
+                            <constraint firstItem="JGo-hq-iKu" firstAttribute="bottom" secondItem="X14-I8-XLM" secondAttribute="bottom" constant="35" id="JuW-T8-uID"/>
                             <constraint firstItem="X14-I8-XLM" firstAttribute="leading" secondItem="JGo-hq-iKu" secondAttribute="leading" id="bXa-Vj-31X"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JGo-hq-iKu"/>
