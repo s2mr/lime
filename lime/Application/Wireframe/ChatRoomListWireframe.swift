@@ -11,14 +11,15 @@ import Foundation
 protocol ChatRoomListWireframe: class {
 	weak var viewController: ChatRoomListViewController? { get set }
 	
-	func showChatRoom()
+	func showChatRoom(index: Int)
 }
 
 class ChatRoomListWireframeImpl: ChatRoomListWireframe {
 	var viewController: ChatRoomListViewController?
 	
-	func showChatRoom() {
+	func showChatRoom(index: Int) {
 		let nextViewController = ChatRoomBuilder().build()
+		nextViewController.chatRoomIndex = index
 		viewController?.navigationController?.pushViewController(nextViewController, animated: true)
 	}
 }

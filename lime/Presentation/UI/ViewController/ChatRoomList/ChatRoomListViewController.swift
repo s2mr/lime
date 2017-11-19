@@ -65,7 +65,7 @@ extension ChatRoomListViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		NSLog("\(indexPath)")
 		//		let chatRoom
-		presenter?.selectCell()
+		presenter?.selectCell(index: indexPath.row)
 	}
 }
 

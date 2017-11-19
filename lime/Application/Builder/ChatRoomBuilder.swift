@@ -9,7 +9,7 @@
 import UIKit
 
 struct ChatRoomBuilder {
-	func build() -> UIViewController {
+	func build() -> ChatRoomViewController {
 		let wireframe = ChatRoomWireframeImpl()
 		let viewController = UIStoryboard(name: "ChatRoom", bundle: nil).instantiateInitialViewController() as! ChatRoomViewController
 		

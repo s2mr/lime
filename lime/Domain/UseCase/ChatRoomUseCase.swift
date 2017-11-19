@@ -12,7 +12,7 @@ import RxCocoa
 import AVFoundation
 
 protocol ChatRoomUseCase {
-	func loadChatRoom() -> Observable<ChatRoomModel>
+	func loadChatRoom(index: Int) -> Observable<ChatRoomModel>
 	func sendChat(chat: ChatEntity) -> Observable<ChatRoomModel>
 	func getAccountInfo() -> Observable<AccountEntity>
 }
@@ -39,8 +39,8 @@ class ChatRoomUseCaseImpl: ChatRoomUseCase {
 		audioPlayerInstance?.prepareToPlay()
 	}
 	
-	func loadChatRoom() -> Observable<ChatRoomModel> {
-		return chatRoomRepository.getChatRoom()
+	func loadChatRoom(index: Int) -> Observable<ChatRoomModel> {
+		return chatRoomRepository.getChatRoom(index: index)
 			.map(translator: ChatRoomTranslator())
 	}
 	

@@ -9,7 +9,7 @@
 import RxSwift
 
 public protocol ChatRoomRepository {
-	func getChatRoom() -> Observable<ChatRoomEntity>
+	func getChatRoom(index: Int) -> Observable<ChatRoomEntity>
 	func sendChat(chat: ChatEntity) -> Observable<ChatRoomEntity>
 }
 
@@ -20,8 +20,8 @@ struct ChatRoomRepositoryImpl: ChatRoomRepository {
 		self.dataStore = dataStore
 	}
 	
-	func getChatRoom() -> Observable<ChatRoomEntity> {
-		return dataStore.getChatRoom()
+	func getChatRoom(index: Int) -> Observable<ChatRoomEntity> {
+		return dataStore.getChatRoom(index: index)
 	}
 	
 	func sendChat(chat: ChatEntity) -> Observable<ChatRoomEntity> {

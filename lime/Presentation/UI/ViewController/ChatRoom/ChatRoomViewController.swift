@@ -25,6 +25,8 @@ class ChatRoomViewController: UIViewController {
 	var presenter: ChatRoomPresenter?
 	var chats: [ChatEntity] = []
 	
+	var chatRoomIndex: Int = 0
+	
 	func inject(presenter: ChatRoomPresenter) {
 		self.presenter = presenter
 	}
@@ -32,7 +34,7 @@ class ChatRoomViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupUI()
-		presenter?.loadChatRoom()
+		presenter?.loadChatRoom(index: chatRoomIndex)
 	}
 	
 	override func didReceiveMemoryWarning() {

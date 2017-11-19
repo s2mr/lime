@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 protocol ChatRoomPresenter {
-	func loadChatRoom()
+	func loadChatRoom(index: Int)
 	func sendMessage(message: String)
 }
 
@@ -31,8 +31,8 @@ class ChatRoomPresenterImpl: ChatRoomPresenter {
 		NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 	}
 	
-	func loadChatRoom() {
-		useCase.loadChatRoom()	
+	func loadChatRoom(index: Int) {
+		useCase.loadChatRoom(index: index)
 			.subscribe(
 				onNext: { [weak self] cml in
 					self?.chatRoomModel = cml
@@ -87,9 +87,11 @@ extension ChatRoomPresenterImpl {
 				
 				self.wireframe.viewController?.tableViewButtomConstraint.constant = keyboardFrameInfo.cgRectValue.height - 35
 				if let vc = self.wireframe.viewController {
-					let indexPath = IndexPath(row: vc.chats.count-1, section: 0)
-					DispatchQueue.main.async {
-						vc.tableView.scrollToRow( at: indexPath, at: .bottom, animated: true)
+					if vc.chats.count > 0 {
+						let indexPath = IndexPath(row: vc.chats.count-1, section: 0)
+						DispatchQueue.main.async {
+							vc.tableView.scrollToRow( at: indexPath, at: .bottom, animated: true)
+						}
 					}
 				}
 			}

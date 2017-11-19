@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 protocol ChatRoomListPresenter {
-	func selectCell()
+	func selectCell(index: Int)
 	func loadChatRoomList()
 }
 
@@ -28,8 +28,8 @@ class ChatRoomListPresenterImpl: ChatRoomListPresenter {
 		self.wireframe = wireframe
 	}
 	
-	func selectCell() {
-		wireframe.showChatRoom()
+	func selectCell(index: Int) {
+		wireframe.showChatRoom(index: index)
 	}
 	
 	func loadChatRoomList() {
