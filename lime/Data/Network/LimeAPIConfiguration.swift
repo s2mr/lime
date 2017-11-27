@@ -19,7 +19,7 @@ public extension LimeAPI.Configuration {
 	static var `default`: LimeAPI.Configuration {
 		let sessionConfiguration: URLSessionConfiguration = .default
 		return LimeAPI.Configuration(sessionConfiguration: sessionConfiguration,
-		                             baseURL: URL(string: "https://lime-server-stg.herokuapp.com/api/v1")! )
-//                                    baseURL: URL(string: "http://localhost:3000/api/v1")! )
+//		                             baseURL: URL(string: "https://lime-server-stg.herokuapp.com/api/v1")! )
+                                    baseURL: URL(string: "http://localhost:3000/api/v1")! )
 	}
 }

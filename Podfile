@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '10.0'
 swift_version = '4.0'
 
 target 'lime' do
@@ -11,6 +11,7 @@ target 'lime' do
   pod 'RxCocoa', :git => 'https://github.com/ReactiveX/RxSwift', :branch => 'rxswift4.0-swift4.0'
   pod 'AlamofireSwiftyJSON'
   pod 'Unbox'
+  pod 'SkyWay'
 
   target 'limeTests' do
     inherit! :search_paths
