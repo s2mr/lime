@@ -18,7 +18,7 @@ class ChatAPI {
 		return Observable.create({ observer in
 			Alamofire.request(self.endPoint,
 							  method: .post,
-							  parameters: ["apikey": Secret().CHAT_API_KEY,
+							  parameters: ["apikey": Secret.CHAT_API_KEY,
 										   "query": chatText],
 							  encoding: URLEncoding.methodDependent,
 							  headers: nil)
