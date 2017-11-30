@@ -12,6 +12,8 @@ import RxCocoa
 public protocol ChatRoomDataStore {
 	func getChatRoom(index: Int) -> Observable<ChatRoomEntity>
 	func sendChat(chat: ChatEntity) -> Observable<ChatRoomEntity>
+	var chatRooms: Variable<[ChatRoomEntity]> { get }
+	var index: Int { get }
 }
 
 class ChatRoomDataStoreImpl: ChatRoomDataStore {
@@ -44,19 +46,31 @@ class ChatRoomDataStoreImpl: ChatRoomDataStore {
 	func getChatRoom(index: Int) -> Observable<ChatRoomEntity> {
 		self.index = index
 		return Observable.create({ (observer) -> Disposable in
-			observer.onNext(self.chatRooms.value[index])
 			
-//			var count = 0
-//			Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { timer in
-//				
-//				if !timer.isValid {
-//					timer.fire()
-//				}
-//				self.chatRoom.chats.append(ChatEntity(text: "じぶんのテキスト", time: "12:33", chatRoomId: 0, speakerId: 10))
-//				self.chatRoom.chats.append(ChatEntity(text: "あいてのテキスト", time: "12:33", chatRoomId: 0, speakerId: 2))
-//				observer.onNext(self.chatRoom)
-//				count += 1
-//			})
+			self.chatRooms.asObservable()
+				.subscribe({ e in
+					switch e {
+					case .next(let v):
+						observer.onNext(v[index])
+					case .error(let e):
+						observer.onError(e)
+					case .completed:
+						break
+					}
+				})
+				.disposed(by: self.disposeBag)
+			
+			//			var count = 0
+			//			Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { timer in
+			//
+			//				if !timer.isValid {
+			//					timer.fire()
+			//				}
+			//				self.chatRoom.chats.append(ChatEntity(text: "じぶんのテキスト", time: "12:33", chatRoomId: 0, speakerId: 10))
+			//				self.chatRoom.chats.append(ChatEntity(text: "あいてのテキスト", time: "12:33", chatRoomId: 0, speakerId: 2))
+			//				observer.onNext(self.chatRoom)
+			//				count += 1
+			//			})
 			
 			return Disposables.create()
 		})
@@ -68,10 +82,10 @@ class ChatRoomDataStoreImpl: ChatRoomDataStore {
 			self.chatRooms.value[self.index].chats.append(chat)
 			observer.onNext(self.chatRooms.value[self.index])
 			
-// サーバに送信
-//			self.api.send(LimeAPI.ChatSendRequest(chat: chat))
-//				.subscribe{print($0)}
-//				.disposed(by: self.disposeBag)
+			// サーバに送信
+			//			self.api.send(LimeAPI.ChatSendRequest(chat: chat))
+			//				.subscribe{print($0)}
+			//				.disposed(by: self.disposeBag)
 			
 			if self.index==1{
 				//返信ボット

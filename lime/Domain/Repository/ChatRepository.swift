@@ -83,9 +83,9 @@ class ChatRepositoryImpl: ChatRepository {
 		
 		self.dataConnection?.on(.DATACONNECTION_EVENT_DATA, callback: { obj in
 			let data = obj as! Data
-			
 			let c = NSKeyedUnarchiver.unarchiveObject(with: data) as! ChatEntity
-			dump(c)
+			
+			self.chatRoomDataStore.chatRooms.value[self.chatRoomDataStore.index].chats.append(c)
 		})
 	}
 }
