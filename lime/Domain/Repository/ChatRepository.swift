@@ -11,7 +11,7 @@ import SkyWay
 
 protocol ChatRepository {
 	func send(_ c: ChatEntity) -> Bool
-	func disconnect()
+	func disconnect() -> Bool
 }
 
 class ChatRepositoryImpl: ChatRepository {
@@ -55,9 +55,10 @@ class ChatRepositoryImpl: ChatRepository {
 		})
 	}
 	
-	func disconnect() {
-		peer.disconnect()
+	func disconnect() -> Bool {
+		let result = peer.disconnect()
 		self.dataConnection = nil
+		return result
 	}
 	
 	func send(_ c: ChatEntity) -> Bool {

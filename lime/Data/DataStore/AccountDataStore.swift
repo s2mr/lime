@@ -22,14 +22,10 @@ public class AccountDataStoreImpl: AccountDataStore {
 	private init(){}
 	
 	public func getAccountInfo() -> Observable<AccountEntity> {
-		if let ae = accountEntity {
-			debugPrint("use cache")
-			return ae
-		} else {
-			debugPrint("use api")
-			let uuid = UUID().uuidString
-			accountEntity = api.send(LimeAPI.AccountGetInfoRequest(uuid: uuid))
-			return accountEntity!
-		}
+		return Observable.create({ observer in
+			let ae = AccountEntity(userId: 0, uuid: UIDevice.current.identifierForVendor?.uuidString ?? "")
+			observer.onNext(ae)
+			return Disposables.create()
+		})
 	}
 }

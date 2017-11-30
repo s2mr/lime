@@ -53,23 +53,29 @@ class ChatRoomPresenterImpl: ChatRoomPresenter {
 		let date = Date()
 		let calendar = Calendar.current
 		
-		var accountEntity: AccountEntity?
-		useCase.getAccountInfo()
-			.subscribe(onNext: { ae in
-				accountEntity = ae
-				
-				self.useCase.sendChat(chat:
-					ChatEntity(text: message,
-							   time: "\(calendar.component(.hour, from: date)):\(calendar.component(.minute, from: date))",
-						chatRoomId: self.chatRoomModel!.id, speakerId: accountEntity!.userId))
-					.subscribe(
-						onNext: { [weak self] chatRoom in
-							self?.loadedChatRoom(chatRoomModel: chatRoom)
-						}
-					)
-					.disposed(by: self.disposeBag)
-			})
-			.disposed(by: disposeBag)
+		let myUUID = UIDevice.current.identifierForVendor?.uuidString ?? ""
+		
+		self.useCase.sendChat(chat:
+			ChatEntity(text: message,
+					   time: "\(calendar.component(.hour, from: date)):\(calendar.component(.minute, from: date))",
+				chatRoomId: self.chatRoomModel!.id, uuid: myUUID))
+			.subscribe(
+				onNext: { [weak self] chatRoom in
+					self?.loadedChatRoom(chatRoomModel: chatRoom)
+				}
+			)
+			.disposed(by: self.disposeBag)
+		
+
+		
+//		var accountEntity: AccountEntity?
+//		useCase.getAccountInfo()
+//			.subscribe(onNext: { ae in
+//				accountEntity = ae
+//
+//
+//			})
+//			.disposed(by: disposeBag)
 	}
 	
 	func viewWillDisappear() {

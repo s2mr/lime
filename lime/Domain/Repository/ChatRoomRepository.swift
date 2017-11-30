@@ -39,7 +39,11 @@ struct ChatRoomRepositoryImpl: ChatRoomRepository {
 	}
 	
 	func viewWillDissapear() {
-		chatRepository.disconnect()
+		if chatRepository.disconnect() {
+			print("success")
+		} else {
+			print("not success")
+		}
 	}
 }
 

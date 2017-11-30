@@ -19,28 +19,31 @@ public protocol ChatRoomDataStore {
 class ChatRoomDataStoreImpl: ChatRoomDataStore {
 	let api = LimeAPI()
 	let disposeBag = DisposeBag()
+	let ae: AccountRepository = AccountRepositoryImpl()
 	
 	var chatRooms: Variable<[ChatRoomEntity]> = Variable<[ChatRoomEntity]>([])
 	var index = 1
 	init() {
+		let myUUID = UIDevice.current.identifierForVendor?.uuidString ?? ""
 		var chats: [ChatEntity] = []
-		chats.append(ChatEntity(text: "今何してる？", time: "12:23", chatRoomId: 0, speakerId: 10))
-		chats.append(ChatEntity(text: "本読んでたよ〜", time: "12:33", chatRoomId: 0, speakerId: 2))
+		chats.append(ChatEntity(text: "今何してる？", time: "12:23", chatRoomId: 0, uuid: myUUID))
+		chats.append(ChatEntity(text: "本読んでたよ〜", time: "12:33", chatRoomId: 0, uuid: ""))
 		chats.append(ChatEntity(text: """
 この本まじ面白くて、
 読み出すと本当止まらないんだよね笑
 今度かそっか？😉
-""", time: "12:33", chatRoomId: 0, speakerId: 2))
+""", time: "12:33", chatRoomId: 0, uuid: myUUID))
 		//		for i in 1...10000 {
 		//			chats.append(ChatEntity(text: "りぷらい\(i)", time: "12:33", chatRoomId: 0, speakerId: 2))
 		//			chats.append(ChatEntity(text: "じぶんのちゃっと\(i)", time: "12:33", chatRoomId: 0, speakerId: 10))
 		//		}
-		chats.append(ChatEntity(text: "いっつも本読んでるね", time: "12:43", chatRoomId: 0, speakerId: 10))
+		chats.append(ChatEntity(text: "いっつも本読んでるね", time: "12:43", chatRoomId: 0, uuid: ""))
 		
 		let friend = UserEntity(userId: "userId", screenName: "たろー", name: "name", statusText: "nemui")
-		chatRooms.value.append(ChatRoomEntity(id: 1, friend: friend, currentText: "currentTxt", chats: chats))
+		self.self.chatRooms.value.append(ChatRoomEntity(id: 1, friend: friend, currentText: "currentTxt", chats: chats))
 		let friend2 = UserEntity(userId: "userId", screenName: "対話BOT", name: "name", statusText: "nemui")
-		chatRooms.value.append(ChatRoomEntity(id: 2, friend: friend2, currentText: "currentTxt", chats: []))
+		self.chatRooms.value.append(ChatRoomEntity(id: 2, friend: friend2, currentText: "currentTxt", chats: []))
+		
 	}
 	
 	func getChatRoom(index: Int) -> Observable<ChatRoomEntity> {
@@ -91,7 +94,7 @@ class ChatRoomDataStoreImpl: ChatRoomDataStore {
 				//返信ボット
 				ChatAPI().sendChat(chatText: chat.text)
 					.subscribe(onNext: { str in
-						let reply = ChatEntity(text: str, time: chat.time, chatRoomId: chat.chatRoomId, speakerId: 2)
+						let reply = ChatEntity(text: str, time: chat.time, chatRoomId: chat.chatRoomId, uuid: "")
 						self.chatRooms.value[self.index].chats.append(reply)
 						
 						observer.onNext(self.chatRooms.value[self.index])

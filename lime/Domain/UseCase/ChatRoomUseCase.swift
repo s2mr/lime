@@ -27,7 +27,6 @@ class ChatRoomUseCaseImpl: ChatRoomUseCase {
 	public init(chatRoomRepository: ChatRoomRepository, accountRepository: AccountRepository) {
 		self.chatRoomRepository = chatRoomRepository
 		self.accountRepository = accountRepository
-//		self.chatRepository = chatRepository
 		
 		// サウンドファイルのパスを生成
 		let soundFilePath = Bundle.main.path(forResource: "send", ofType: "m4a")!
@@ -43,8 +42,7 @@ class ChatRoomUseCaseImpl: ChatRoomUseCase {
 	}
 	
 	func viewWillDisappear() {
-		
-//		chatRepository.disconnect()
+		chatRoomRepository.viewWillDissapear()
 	}
 	
 	func loadChatRoom(index: Int) -> Observable<ChatRoomModel> {

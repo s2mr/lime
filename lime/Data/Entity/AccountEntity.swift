@@ -11,12 +11,15 @@ import Unbox
 
 public struct AccountEntity: Unboxable {
 	var userId: Int
+	var uuid: String
 	
 	public init(unboxer: Unboxer) throws {
 		userId = try unboxer.unbox(key: "user-id")
+		uuid = try unboxer.unbox(key: "uuid")
 	}
 	
-	init(userId:Int) {
+	init(userId:Int, uuid: String) {
 		self.userId = userId
+		self.uuid = uuid
 	}
 }
