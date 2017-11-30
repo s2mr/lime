@@ -22,13 +22,12 @@ protocol ChatRoomUseCase {
 class ChatRoomUseCaseImpl: ChatRoomUseCase {
 	private let chatRoomRepository: ChatRoomRepository
 	private let accountRepository: AccountRepository
-	private let chatRepository: ChatRepository
 	var audioPlayerInstance: AVAudioPlayer?
 	
-	public init(chatRoomRepository: ChatRoomRepository, accountRepository: AccountRepository, chatRepository: ChatRepository) {
+	public init(chatRoomRepository: ChatRoomRepository, accountRepository: AccountRepository) {
 		self.chatRoomRepository = chatRoomRepository
 		self.accountRepository = accountRepository
-		self.chatRepository = chatRepository
+//		self.chatRepository = chatRepository
 		
 		// サウンドファイルのパスを生成
 		let soundFilePath = Bundle.main.path(forResource: "send", ofType: "m4a")!
@@ -44,7 +43,8 @@ class ChatRoomUseCaseImpl: ChatRoomUseCase {
 	}
 	
 	func viewWillDisappear() {
-		chatRepository.disconnect()
+		
+//		chatRepository.disconnect()
 	}
 	
 	func loadChatRoom(index: Int) -> Observable<ChatRoomModel> {
@@ -54,18 +54,12 @@ class ChatRoomUseCaseImpl: ChatRoomUseCase {
 	
 	func sendChat(chat: ChatEntity) -> Observable<ChatRoomModel> {
 		playSendSound()
-		let res = chatRepository.send(chat)
-		if res {
-			print("SEND")
-		} else {
-			print("NOT SEND")
-		}
 		
-		return chatRoomRepository.getChatRoom(index: 0)
-			.map(translator: ChatRoomTranslator())
-		
-//		return chatRoomRepository.sendChat(chat: chat)
+//		return chatRoomRepository.getChatRoom(index: 0)
 //			.map(translator: ChatRoomTranslator())
+		
+		return chatRoomRepository.sendChat(chat: chat)
+			.map(translator: ChatRoomTranslator())
 	}
 	
 	func getAccountInfo() -> Observable<AccountEntity> {

@@ -7,6 +7,7 @@
 //
 
 import RxSwift
+import RxCocoa
 
 public protocol ChatRoomDataStore {
 	func getChatRoom(index: Int) -> Observable<ChatRoomEntity>
@@ -14,11 +15,10 @@ public protocol ChatRoomDataStore {
 }
 
 class ChatRoomDataStoreImpl: ChatRoomDataStore {
-//	var chatRoom: ChatRoomEntity
 	let api = LimeAPI()
 	let disposeBag = DisposeBag()
 	
-	var chatRooms: [ChatRoomEntity] = []
+	var chatRooms: Variable<[ChatRoomEntity]> = Variable<[ChatRoomEntity]>([])
 	var index = 1
 	init() {
 		var chats: [ChatEntity] = []
@@ -36,15 +36,15 @@ class ChatRoomDataStoreImpl: ChatRoomDataStore {
 		chats.append(ChatEntity(text: "いっつも本読んでるね", time: "12:43", chatRoomId: 0, speakerId: 10))
 		
 		let friend = UserEntity(userId: "userId", screenName: "たろー", name: "name", statusText: "nemui")
-		chatRooms.append(ChatRoomEntity(id: 1, friend: friend, currentText: "currentTxt", chats: chats))
+		chatRooms.value.append(ChatRoomEntity(id: 1, friend: friend, currentText: "currentTxt", chats: chats))
 		let friend2 = UserEntity(userId: "userId", screenName: "対話BOT", name: "name", statusText: "nemui")
-		chatRooms.append(ChatRoomEntity(id: 2, friend: friend2, currentText: "currentTxt", chats: []))
+		chatRooms.value.append(ChatRoomEntity(id: 2, friend: friend2, currentText: "currentTxt", chats: []))
 	}
 	
 	func getChatRoom(index: Int) -> Observable<ChatRoomEntity> {
 		self.index = index
 		return Observable.create({ (observer) -> Disposable in
-			observer.onNext(self.chatRooms[index])
+			observer.onNext(self.chatRooms.value[index])
 			
 //			var count = 0
 //			Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { timer in
@@ -65,8 +65,8 @@ class ChatRoomDataStoreImpl: ChatRoomDataStore {
 	
 	func sendChat(chat: ChatEntity) -> Observable<ChatRoomEntity> {
 		return Observable.create( {observer in
-			self.chatRooms[self.index].chats.append(chat)
-			observer.onNext(self.chatRooms[self.index])
+			self.chatRooms.value[self.index].chats.append(chat)
+			observer.onNext(self.chatRooms.value[self.index])
 			
 // サーバに送信
 //			self.api.send(LimeAPI.ChatSendRequest(chat: chat))
@@ -78,9 +78,9 @@ class ChatRoomDataStoreImpl: ChatRoomDataStore {
 				ChatAPI().sendChat(chatText: chat.text)
 					.subscribe(onNext: { str in
 						let reply = ChatEntity(text: str, time: chat.time, chatRoomId: chat.chatRoomId, speakerId: 2)
-						self.chatRooms[self.index].chats.append(reply)
+						self.chatRooms.value[self.index].chats.append(reply)
 						
-						observer.onNext(self.chatRooms[self.index])
+						observer.onNext(self.chatRooms.value[self.index])
 					})
 					.disposed(by: self.disposeBag)
 			} else if self.index==0 {

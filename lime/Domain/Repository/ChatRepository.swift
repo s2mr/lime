@@ -21,11 +21,14 @@ class ChatRepositoryImpl: ChatRepository {
 	var strOwnId: String?
 	var bConnected: Bool = false
 	
-	init() {
+	let chatRoomDataStore: ChatRoomDataStore
+	
+	init(chatRoomDataStore: ChatRoomDataStore) {
 		let option = SKWPeerOption()
 		option.key = Secret.SKYWAY_API_KEY
 		option.domain = Secret.SKYWAY_DOMAIN
 		peer = SKWPeer(id: nil, options: option)!
+		self.chatRoomDataStore = chatRoomDataStore
 		
 		peer.on(.PEER_EVENT_OPEN, callback: { id in
 			self.strOwnId = String(describing: id)
@@ -82,7 +85,6 @@ class ChatRepositoryImpl: ChatRepository {
 			let data = obj as! Data
 			
 			let c = NSKeyedUnarchiver.unarchiveObject(with: data) as! ChatEntity
-			
 			dump(c)
 		})
 	}
