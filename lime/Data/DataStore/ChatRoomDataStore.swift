@@ -67,10 +67,11 @@ class ChatRoomDataStoreImpl: ChatRoomDataStore {
 		return Observable.create( {observer in
 			self.chatRooms[self.index].chats.append(chat)
 			observer.onNext(self.chatRooms[self.index])
-			// サーバに送信
-			self.api.send(LimeAPI.ChatSendRequest(chat: chat))
-				.subscribe{print($0)}
-				.disposed(by: self.disposeBag)
+			
+// サーバに送信
+//			self.api.send(LimeAPI.ChatSendRequest(chat: chat))
+//				.subscribe{print($0)}
+//				.disposed(by: self.disposeBag)
 			
 			if self.index==1{
 				//返信ボット
@@ -82,6 +83,8 @@ class ChatRoomDataStoreImpl: ChatRoomDataStore {
 						observer.onNext(self.chatRooms[self.index])
 					})
 					.disposed(by: self.disposeBag)
+			} else if self.index==0 {
+				
 			}
 			
 			return Disposables.create()

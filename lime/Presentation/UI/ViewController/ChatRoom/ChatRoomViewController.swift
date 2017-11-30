@@ -44,6 +44,7 @@ class ChatRoomViewController: UIViewController {
 	
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
+		presenter?.viewWillDisappear()
 		self.tabBarController?.tabBar.isHidden = false
 	}
 	
