@@ -8,11 +8,14 @@
 
 import Foundation
 import RxSwift
+import SkyWay
 
 protocol ChatRoomPresenter {
 	func loadChatRoom(index: Int)
 	func sendMessage(message: String)
 	func viewWillDisappear()
+	func callButtonTapped()
+	func setStream(local: SKWVideo, remote: SKWVideo)
 }
 
 class ChatRoomPresenterImpl: ChatRoomPresenter {
@@ -80,6 +83,14 @@ class ChatRoomPresenterImpl: ChatRoomPresenter {
 	
 	func viewWillDisappear() {
 		useCase.viewWillDisappear()
+	}
+	
+	func callButtonTapped() {
+		useCase.callButtonTapped()
+	}
+	
+	func setStream(local: SKWVideo, remote: SKWVideo) {
+		useCase.setStream(local: local, remote: remote)
 	}
 }
 

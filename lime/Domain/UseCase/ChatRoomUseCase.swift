@@ -17,6 +17,8 @@ protocol ChatRoomUseCase {
 	func sendChat(chat: ChatEntity) -> Observable<ChatRoomModel>
 	func getAccountInfo() -> Observable<AccountEntity>
 	func viewWillDisappear()
+	func callButtonTapped()
+	func setStream(local: SKWVideo, remote: SKWVideo)
 }
 
 class ChatRoomUseCaseImpl: ChatRoomUseCase {
@@ -41,10 +43,6 @@ class ChatRoomUseCaseImpl: ChatRoomUseCase {
 		audioPlayerInstance?.prepareToPlay()
 	}
 	
-	func viewWillDisappear() {
-		chatRoomRepository.viewWillDissapear()
-	}
-	
 	func loadChatRoom(index: Int) -> Observable<ChatRoomModel> {
 		return chatRoomRepository.getChatRoom(index: index)
 			.map(translator: ChatRoomTranslator())
@@ -62,6 +60,18 @@ class ChatRoomUseCaseImpl: ChatRoomUseCase {
 	
 	func getAccountInfo() -> Observable<AccountEntity> {
 		return accountRepository.getAccountInfo()
+	}
+	
+	func viewWillDisappear() {
+		chatRoomRepository.viewWillDissapear()
+	}
+	
+	func callButtonTapped() {
+		chatRoomRepository.callButtonTapped()
+	}
+	
+	func setStream(local: SKWVideo, remote: SKWVideo) {
+		chatRoomRepository.setStream(local: local, remote: remote)
 	}
 }
 

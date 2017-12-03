@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,17 +28,37 @@
                                     <outlet property="delegate" destination="0gB-UF-5F4" id="jmn-bK-CLi"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f3i-Vl-w4L" customClass="SKWVideo">
+                                <rect key="frame" x="187.5" y="317" width="187.5" height="150"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zkb-rg-8Yv" customClass="SKWVideo">
+                                <rect key="frame" x="187.5" y="467" width="187.5" height="150"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="F4N-Ce-Pka"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.44313725490196076" green="0.58039215686274503" blue="0.76078431372549016" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="X14-I8-XLM" firstAttribute="top" secondItem="JGo-hq-iKu" secondAttribute="top" id="2ay-ab-2XZ"/>
                             <constraint firstItem="JGo-hq-iKu" firstAttribute="trailing" secondItem="X14-I8-XLM" secondAttribute="trailing" id="4jj-o7-tcE"/>
+                            <constraint firstItem="Zkb-rg-8Yv" firstAttribute="width" secondItem="ZHx-CU-rDG" secondAttribute="width" multiplier="0.5" id="AGX-4x-EzF"/>
+                            <constraint firstItem="Zkb-rg-8Yv" firstAttribute="trailing" secondItem="JGo-hq-iKu" secondAttribute="trailing" id="B42-xO-i5c"/>
                             <constraint firstItem="JGo-hq-iKu" firstAttribute="bottom" secondItem="X14-I8-XLM" secondAttribute="bottom" constant="35" id="JuW-T8-uID"/>
+                            <constraint firstItem="Zkb-rg-8Yv" firstAttribute="top" secondItem="f3i-Vl-w4L" secondAttribute="bottom" id="Kot-h2-IPR"/>
+                            <constraint firstItem="f3i-Vl-w4L" firstAttribute="height" secondItem="Zkb-rg-8Yv" secondAttribute="height" id="Wsp-4g-l4g"/>
+                            <constraint firstItem="f3i-Vl-w4L" firstAttribute="trailing" secondItem="JGo-hq-iKu" secondAttribute="trailing" id="YuQ-ah-QJz"/>
                             <constraint firstItem="X14-I8-XLM" firstAttribute="leading" secondItem="JGo-hq-iKu" secondAttribute="leading" id="bXa-Vj-31X"/>
+                            <constraint firstItem="f3i-Vl-w4L" firstAttribute="width" secondItem="Zkb-rg-8Yv" secondAttribute="width" id="dXY-ej-2R6"/>
+                            <constraint firstItem="JGo-hq-iKu" firstAttribute="bottom" secondItem="Zkb-rg-8Yv" secondAttribute="bottom" constant="50" id="zX2-S1-OSP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JGo-hq-iKu"/>
                     </view>
                     <connections>
+                        <outlet property="localView" destination="Zkb-rg-8Yv" id="gHu-7s-4EO"/>
+                        <outlet property="remoteView" destination="f3i-Vl-w4L" id="wH4-O4-yp1"/>
                         <outlet property="tableView" destination="X14-I8-XLM" id="yVo-MC-eqz"/>
                         <outlet property="tableViewButtomConstraint" destination="JuW-T8-uID" id="zX7-97-rVN"/>
                     </connections>

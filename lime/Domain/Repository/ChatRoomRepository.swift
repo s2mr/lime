@@ -7,11 +7,14 @@
 //
 
 import RxSwift
+import SkyWay
 
 public protocol ChatRoomRepository {
 	func getChatRoom(index: Int) -> Observable<ChatRoomEntity>
 	func sendChat(chat: ChatEntity) -> Observable<ChatRoomEntity>
 	func viewWillDissapear()
+	func callButtonTapped()
+	func setStream(local: SKWVideo, remote: SKWVideo)
 }
 
 struct ChatRoomRepositoryImpl: ChatRoomRepository {
@@ -40,10 +43,18 @@ struct ChatRoomRepositoryImpl: ChatRoomRepository {
 	
 	func viewWillDissapear() {
 		if chatRepository.disconnect() {
-			print("success")
+			print("success chatRepository.disconnect()")
 		} else {
-			print("not success")
+			print("not success chatRepository.disconnect()")
 		}
+	}
+	
+	func callButtonTapped() {
+		chatRepository.call()
+	}
+	
+	func setStream(local: SKWVideo, remote: SKWVideo) {
+		chatRepository.setStream(local: local, remote: remote)
 	}
 }
 

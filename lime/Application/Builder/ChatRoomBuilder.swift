@@ -12,6 +12,8 @@ struct ChatRoomBuilder {
 	func build() -> ChatRoomViewController {
 		let wireframe = ChatRoomWireframeImpl()
 		let viewController = UIStoryboard(name: "ChatRoom", bundle: nil).instantiateInitialViewController() as! ChatRoomViewController
+		let rightButton = UIBarButtonItem(barButtonSystemItem: .camera, target: viewController, action: #selector(viewController.callButtonTapped))
+		viewController.navigationItem.setRightBarButton(rightButton, animated: true)
 		
 		let useCase = ChatRoomUseCaseImpl(
 			chatRoomRepository: ChatRoomRepositoryImpl(

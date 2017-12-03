@@ -12,11 +12,16 @@ import SkyWay
 protocol ChatRepository {
 	func send(_ c: ChatEntity) -> Bool
 	func disconnect() -> Bool
+	func call()
+	func setStream(local: SKWVideo, remote: SKWVideo)
 }
 
 class ChatRepositoryImpl: ChatRepository {
 	var peer: SKWPeer
 	var dataConnection: SKWDataConnection?
+	var localStream: SKWMediaStream?
+	var localView: SKWVideo!
+	var remoteView: SKWVideo!
 	
 	var strOwnId: String?
 	var bConnected: Bool = false
@@ -32,6 +37,16 @@ class ChatRepositoryImpl: ChatRepository {
 		
 		peer.on(.PEER_EVENT_OPEN, callback: { id in
 			self.strOwnId = String(describing: id)
+			
+			let constraints = SKWMediaConstraints()
+			constraints.maxWidth = 960
+			constraints.maxHeight = 540
+			constraints.cameraPosition = .CAMERA_POSITION_FRONT
+//			
+			SKWNavigator.initialize(self.peer)
+			self.localStream = SKWNavigator.getUserMedia(constraints)
+			self.localStream?.addVideoRenderer(self.localView, track: 0)
+			
 			// 自分以外のピアと接続
 			self.peer.listAllPeers({ arr in
 				let arr = arr! as! [String]
@@ -55,9 +70,15 @@ class ChatRepositoryImpl: ChatRepository {
 		})
 	}
 	
+	func setStream(local: SKWVideo, remote: SKWVideo) {
+		self.localView = local
+		self.remoteView = remote
+	}
+	
 	func disconnect() -> Bool {
-		let result = peer.disconnect()
+		dataConnection?.close()
 		self.dataConnection = nil
+		let result = peer.disconnect()
 		return result
 	}
 	
@@ -73,6 +94,7 @@ class ChatRepositoryImpl: ChatRepository {
 		guard let _  = self.dataConnection else { return }
 		self.dataConnection?.on(.DATACONNECTION_EVENT_OPEN, callback: { obj in
 			self.bConnected = true
+			
 			debugPrint("Connected")
 		})
 		
@@ -82,11 +104,19 @@ class ChatRepositoryImpl: ChatRepository {
 			debugPrint("Disconnected")
 		})
 		
+		self.dataConnection?.on(.DATACONNECTION_EVENT_ERROR, callback: { obj in
+			debugPrint("Error")
+		})
+		
 		self.dataConnection?.on(.DATACONNECTION_EVENT_DATA, callback: { obj in
 			let data = obj as! Data
 			let c = NSKeyedUnarchiver.unarchiveObject(with: data) as! ChatEntity
 			
 			self.chatRoomDataStore.chatRooms.value[self.chatRoomDataStore.index].chats.append(c)
 		})
+	}
+	
+	func call() {
+//		<#code#>
 	}
 }

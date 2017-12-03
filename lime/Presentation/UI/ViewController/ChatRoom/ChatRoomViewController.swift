@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import SkyWay
 
 protocol ChatRoomViewInput: class {
 	func setChatRoom(_:ChatRoomModel)
@@ -16,9 +17,11 @@ protocol ChatRoomViewInput: class {
 class ChatRoomViewController: UIViewController {
 	
 	fileprivate let disposeBag = DisposeBag()
-	
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var tableViewButtomConstraint: NSLayoutConstraint!
+	
+	@IBOutlet weak var remoteView: SKWVideo!
+	@IBOutlet weak var localView: SKWVideo!
 	
 	var bottomView: ChatRoomInputView!
 	
@@ -83,6 +86,8 @@ extension ChatRoomViewController {
 		let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.backgroundTapped))
 		tapRecognizer.cancelsTouchesInView = false // TableViewへタップイベントを流す
 		self.tableView.addGestureRecognizer(tapRecognizer)
+		
+		presenter?.setStream(local: localView, remote: remoteView)
 	}
 	
 	@objc func backgroundTapped() {
@@ -134,5 +139,12 @@ extension ChatRoomViewController: ChatRoomViewInput {
 	func setChatRoom(_ chatRoomModel: ChatRoomModel) {
 		self.chats = chatRoomModel.chats
 		self.tableView.reloadData()
+	}
+}
+
+extension ChatRoomViewController {
+	@objc func callButtonTapped() {
+		print("callButtonTapped()")
+		presenter?.callButtonTapped()
 	}
 }
